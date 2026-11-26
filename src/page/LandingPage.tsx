@@ -8,13 +8,13 @@ import DesignShowcase from "../components/DesignShowcase";
 import KineticShowcase from "../components/KineticShowcase";
 import VelocityTicker from "../components/VelocityTicker";
 import CommandDock from "../components/CommandDock";
+import ProcessIllustration from "../components/ProcessIllustration";
 import Modal from "../components/Modal";
 import { useModalStore } from "../components/useModalStore";
 import {
   card2Data,
   cardsData,
   testimonialsData,
-  processData,
   companyStats,
 } from "../utils/Card1Data";
 import { Link } from "react-scroll";
@@ -22,24 +22,12 @@ import { motion, useScroll } from "framer-motion";
 import {
   FiMenu,
   FiX,
-  FiArrowRight,
   FiStar,
-  FiCompass,
-  FiPenTool,
-  FiCode,
-  FiShield,
   FiPhone,
   FiMail,
   FiMapPin,
   FiSettings,
 } from "react-icons/fi";
-
-const stepIcons: Record<string, React.ReactNode> = {
-  discovery: <FiCompass className="w-6 h-6 text-[#EF5613]" />,
-  design: <FiPenTool className="w-6 h-6 text-[#EF5613]" />,
-  development: <FiCode className="w-6 h-6 text-[#EF5613]" />,
-  testing: <FiShield className="w-6 h-6 text-[#EF5613]" />,
-};
 
 const LandingPage: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
@@ -435,44 +423,8 @@ const LandingPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Interactive 4-Step Process Pipeline */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {processData.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => openModal(item.id)}
-              className="group relative rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#08141C] border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#EF5613]/50 transition-all duration-300">
-                    {stepIcons[item.id]}
-                  </div>
-                  <span className="text-3xl font-black text-white/15 group-hover:text-[#EF5613]/40 transition-colors">
-                    {item.step}
-                  </span>
-                </div>
-
-                <span className="text-xs font-semibold text-[#EF5613] uppercase tracking-wider">
-                  {item.tagline}
-                </span>
-
-                <h3 className="font-bold text-xl text-white mt-1 group-hover:text-[#EF5613] transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-                  {item.summary}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-gray-400 group-hover:text-[#EF5613] transition-colors">
-                <span>Phase Breakdown</span>
-                <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Interactive Illustrated Process Architecture */}
+        <ProcessIllustration />
       </section>
 
       {/* SERVICES SECTION */}
