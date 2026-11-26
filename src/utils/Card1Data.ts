@@ -116,6 +116,136 @@ export const cards3Data = [
   },
 ];
 
+export const flagshipApps = [
+  {
+    id: "omnipay",
+    name: "OmniPay AI",
+    badge: "Next-Gen Fintech Engine",
+    category: "Autonomous Financial OS",
+    tagline: "Sub-50ms Global Cross-Border Settlements & Fraud Telemetry",
+    description:
+      "An institutional-grade fintech ecosystem handling real-time multi-currency wallets, biometric authorization, automated ledger reconciliation, and AI-driven anti-money laundering heuristics.",
+    metrics: [
+      { label: "Throughput", value: "48,500 TPS" },
+      { label: "Latency", value: "24ms Avg" },
+      { label: "Fraud Prevention", value: "99.98%" },
+      { label: "Global Coverage", value: "140+ Countries" },
+    ],
+    stack: ["Rust", "Next.js 15", "Kafka", "PostgreSQL", "TailwindCSS", "AWS KMS"],
+    liveStatus: "Live Production Cluster",
+    architecture: [
+      "Zero-knowledge encrypted payment state channels",
+      "Event-driven Kafka streaming for sub-second reconciliation",
+      "PCI-DSS Level 1 compliant vault infrastructure",
+    ],
+  },
+  {
+    id: "pulsemed",
+    name: "PulseMed 360",
+    badge: "Clinical Intelligence",
+    category: "Predictive Telehealth & EHR Platform",
+    tagline: "AI Symptom Triage, Live WebRTC Consultations & Vitals Sync",
+    description:
+      "A HIPAA-compliant clinical digital health platform connecting 120,000+ patients with certified medical specialists, powered by real-time IoT diagnostic feeds and automated electronic prescription dispatch.",
+    metrics: [
+      { label: "Active Patients", value: "120K+" },
+      { label: "Consultation Uptime", value: "99.99%" },
+      { label: "Triage Accuracy", value: "99.4%" },
+      { label: "HIPAA Compliant", value: "SOC 2 Type II" },
+    ],
+    stack: ["React Native", "WebRTC", "Go", "Docker", "TimescaleDB", "GCP"],
+    liveStatus: "HIPAA Certified Engine",
+    architecture: [
+      "End-to-end encrypted peer-to-peer WebRTC video stream",
+      "Real-time streaming biometric telemetry ingestion",
+      "HL7 / FHIR standard electronic health record integration",
+    ],
+  },
+  {
+    id: "nexuslogix",
+    name: "NexusLogix",
+    badge: "Global Logistics AI",
+    category: "Autonomous Supply Chain Control Tower",
+    tagline: "3D Geospatial Fleet Telemetry & Predictive Route Dispatch",
+    description:
+      "An enterprise-scale supply chain command center orchestrating over 3,500 commercial transport assets with real-time GPS telemetry, predictive maintenance alerts, and automated multi-stop routing.",
+    metrics: [
+      { label: "Tracked Assets", value: "3,500+ Fleets" },
+      { label: "Fuel Cost Reduction", value: "-28.4%" },
+      { label: "ETA Accuracy", value: "99.2%" },
+      { label: "Daily Data Ingest", value: "1.4 TB" },
+    ],
+    stack: ["TypeScript", "Python / FastAPI", "Mapbox GL", "Redis", "Kubernetes", "MQTT"],
+    liveStatus: "Real-time Telemetry Live",
+    architecture: [
+      "Edge IoT sensor ingestion over lightweight MQTT protocol",
+      "A* graph traversal and geospatial route optimization",
+      "Sub-second alert triggering for abnormal temperature / cargo state",
+    ],
+  },
+  {
+    id: "aetherai",
+    name: "AetherCloud Copilot",
+    badge: "Enterprise AI Swarm",
+    category: "Autonomous Multi-Agent Workflow Engine",
+    tagline: "Generative Context Synthesis & Automated Cross-Tool Execution",
+    description:
+      "An enterprise generative AI workplace platform that coordinates specialized agent swarms to analyze complex contracts, generate production code, query internal knowledge graphs, and automate business operations.",
+    metrics: [
+      { label: "Task Speedup", value: "12x Faster" },
+      { label: "Vector Index Size", value: "50M+ Docs" },
+      { label: "Semantic Accuracy", value: "98.7%" },
+      { label: "Data Privacy", value: "Private VPC" },
+    ],
+    stack: ["PyTorch", "Next.js", "LangGraph", "ChromaDB", "FastAPI", "OpenAI / Claude API"],
+    liveStatus: "Enterprise Swarm Active",
+    architecture: [
+      "Hybrid RAG with vector semantic search and BM25 re-ranking",
+      "Zero data leakage architecture running in isolated tenant VPCs",
+      "Automated human-in-the-loop review checkpoints for audited actions",
+    ],
+  },
+];
+
+export const designShowcaseData = [
+  {
+    id: "systems",
+    title: "Pixel-Perfect Design Systems",
+    tag: "Design Architecture",
+    description:
+      "We engineer cohesive, tokenized design systems that guarantee seamless visual harmony, WCAG AAA accessibility, and rapid developer velocity across web and mobile.",
+    highlights: ["Tokenized Color & Typography Scales", "Dynamic Component Variants", "Automated Storybook Docs"],
+    stat: "100% Component Uniformity",
+  },
+  {
+    id: "interactions",
+    title: "Fluid 60FPS Micro-Interactions",
+    tag: "Creative Motion Engineering",
+    description:
+      "Every transition, click, and gesture is fine-tuned with physics-based motion curves. We craft intuitive micro-feedback that makes digital software feel tactile and alive.",
+    highlights: ["Spring-Physics Motion Curves", "Haptic-Feel Visual Triggers", "Sub-frame Render Efficiency"],
+    stat: "60 FPS Fluidity",
+  },
+  {
+    id: "dataviz",
+    title: "High-Density Data Visualization",
+    tag: "Complex UI Aesthetics",
+    description:
+      "Transforming complex, high-frequency datasets into intuitive executive command centers with live SVG charts, interactive heatmaps, and telemetry dashboards.",
+    highlights: ["Streaming Real-Time Candlesticks", "Geospatial Data Overlays", "Adaptive Telemetry Filters"],
+    stat: "Sub-Second Data Rendering",
+  },
+  {
+    id: "craft",
+    title: "Next-Gen Dark UI Aesthetics",
+    tag: "Visual Craft & Contrast",
+    description:
+      "High-contrast obsidian interfaces with surgical typography, solid depth hierarchy, and deliberate brand accents that demand attention and project enterprise authority.",
+    highlights: ["Deep Obsidian Palette Hierarchy", "Zero Visual Clutter", "Tailored Iconographic Language"],
+    stat: "Executive-Grade Polish",
+  },
+];
+
 export const processData = [
   {
     step: "01",

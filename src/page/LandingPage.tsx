@@ -4,11 +4,11 @@ import Button from "../common/Button";
 import Card1 from "../components/Card1";
 import Card2 from "../components/Card2";
 import Card3 from "../components/Card3";
+import DesignShowcase from "../components/DesignShowcase";
 import Modal from "../components/Modal";
 import { useModalStore } from "../components/useModalStore";
 import {
   card2Data,
-  cards3Data,
   cardsData,
   testimonialsData,
   processData,
@@ -86,7 +86,7 @@ const LandingPage: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             <Link
               to="services"
               spy={true}
@@ -99,6 +99,28 @@ const LandingPage: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Flagship Apps
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="design-lab"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Creative Lab
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
               to="process"
               spy={true}
               smooth={true}
@@ -107,17 +129,6 @@ const LandingPage: React.FC = () => {
               className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
             >
               Our Process
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="portfolio"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Portfolio
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
@@ -192,6 +203,28 @@ const LandingPage: React.FC = () => {
               Our Services
             </Link>
             <Link
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Flagship Apps & Products
+            </Link>
+            <Link
+              to="design-lab"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Creative Design Lab
+            </Link>
+            <Link
               to="process"
               spy={true}
               smooth={true}
@@ -201,17 +234,6 @@ const LandingPage: React.FC = () => {
               className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
             >
               Our Process
-            </Link>
-            <Link
-              to="portfolio"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Portfolio & Case Studies
             </Link>
             <Link
               to="testimonials"
@@ -413,25 +435,33 @@ const LandingPage: React.FC = () => {
         <Card2 cardsData={card2Data} />
       </section>
 
-      {/* PORTFOLIO SECTION */}
+      {/* FLAGSHIP APPS & SHOWCASE SECTION */}
       <section
         id="portfolio"
         className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
-            Proven Track Record
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-xs uppercase font-extrabold tracking-widest text-[#EF5613]">
+            Engineering Mastery
           </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
-            Featured Work & Case Studies
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mt-2 tracking-tight">
+            Flagship Software & Mindblowing Applications
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
-          <p className="text-sm sm:text-base text-gray-300 mt-4">
-            A glimpse into the robust digital platforms and mobile applications crafted by our senior development team.
+          <p className="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed">
+            A glimpse into the mission-critical digital platforms, clinical health systems, and high-concurrency fintech engines engineered by SaulTech.
           </p>
         </div>
 
-        <Card3 cardsData={cards3Data} />
+        <Card3 />
+      </section>
+
+      {/* HIGH GRAPHICS & CREATIVE DESIGN LAB */}
+      <section
+        id="design-lab"
+        className="w-full py-16 md:py-24 border-t border-b border-white/10 bg-[#061017]"
+      >
+        <DesignShowcase />
       </section>
 
       {/* CLIENT TESTIMONIALS SECTION */}
@@ -601,7 +631,12 @@ const LandingPage: React.FC = () => {
                 </li>
                 <li>
                   <Link to="portfolio" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Portfolio
+                    Flagship Apps
+                  </Link>
+                </li>
+                <li>
+                  <Link to="design-lab" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Creative Design Lab
                   </Link>
                 </li>
                 <li>
