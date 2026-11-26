@@ -442,14 +442,14 @@ const LandingPage: React.FC = () => {
       >
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs uppercase font-extrabold tracking-widest text-[#EF5613]">
-            Engineering Mastery
+            Proven Track Record
           </span>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mt-2 tracking-tight">
-            Flagship Software & Mindblowing Applications
+            Flagship Products We've Built
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
           <p className="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed">
-            A glimpse into the mission-critical digital platforms, clinical health systems, and high-concurrency fintech engines engineered by SaulTech.
+            Explore 8 production-grade software ecosystems engineered by SaulTech — spanning fintech banking, AI talent matching, media streaming, educational ERPs, enterprise work suites, and hospital operating systems.
           </p>
         </div>
 
