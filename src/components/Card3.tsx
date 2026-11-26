@@ -141,6 +141,16 @@ const Card3: React.FC = () => {
 
         {/* Real Device Showcase Canvas */}
         <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-4 sm:p-8 overflow-hidden min-h-[580px] flex items-center justify-center">
+          {/* Floating Breakout Badges */}
+          <div className="absolute top-4 left-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-[#EF5613] text-white text-[11px] font-bold shadow-xl">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span>⚡ {currentApp.name} Live Engine</span>
+          </div>
+
+          <div className="absolute top-4 right-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-white/15 text-gray-300 text-[11px] font-mono shadow-xl">
+            <span>🔒 Production Cloud Cluster</span>
+          </div>
+
           {/* Subtle Canvas Grid Background */}
           <div
             className="absolute inset-0 opacity-10 pointer-events-none"
@@ -638,7 +648,7 @@ const Card3: React.FC = () => {
             <div
               className={`transition-all duration-300 ${
                 deviceMode === "dual"
-                  ? "hidden lg:block absolute right-4 xl:right-10 top-1/2 -translate-y-1/2 z-20 scale-95 hover:scale-100"
+                  ? "hidden lg:block absolute -right-2 xl:right-6 top-1/2 -translate-y-1/2 z-20 -rotate-2 hover:rotate-0 transition-transform duration-300 shadow-[0_30px_70px_rgba(0,0,0,0.9)] scale-95 hover:scale-100"
                   : "w-full max-w-xs"
               }`}
             >
