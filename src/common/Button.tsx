@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white hover:brightness-110 hover:shadow-[0_0_24px_rgba(239,86,19,0.55)] hover:scale-[1.02] active:scale-[0.98]",
+      "bg-[#EF5613] text-white hover:bg-[#d94a0d] active:bg-[#c24009] hover:shadow-[0_0_20px_rgba(239,86,19,0.35)] hover:scale-[1.02] active:scale-[0.98]",
     outline:
       "border-2 border-[#EF5613] text-[#EF5613] hover:bg-[#EF5613]/10 hover:shadow-[0_0_20px_rgba(239,86,19,0.3)] hover:scale-[1.02] active:scale-[0.98]",
     ghost:

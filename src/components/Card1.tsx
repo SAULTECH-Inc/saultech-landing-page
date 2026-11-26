@@ -21,11 +21,8 @@ const Card1: React.FC<CardProps> = ({ cardsData }) => {
       {cardsData.map((card) => (
         <div
           key={card.id}
-          className="group relative flex flex-col justify-between rounded-2xl bg-gradient-to-b from-[#12222D]/90 to-[#0A1621]/90 p-8 border border-white/10 hover:border-[#EF5613]/50 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(239,86,19,0.15)] hover:-translate-y-1.5"
+          className="group relative flex flex-col justify-between rounded-2xl bg-[#101F2B] p-8 border border-white/10 hover:border-[#EF5613] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(239,86,19,0.15)] hover:-translate-y-1.5"
         >
-          {/* Subtle top-right ambient glow */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#EF5613]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#EF5613]/20 transition-all duration-300" />
-
           <div>
             <div className="w-16 h-16 rounded-xl bg-[#08141C] border border-white/10 flex items-center justify-center p-3 shadow-inner group-hover:scale-105 transition-transform duration-300">
               <img src={card.image} alt={card.title} className="w-full h-full object-contain" />

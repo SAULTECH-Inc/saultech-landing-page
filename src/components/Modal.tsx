@@ -113,7 +113,7 @@ const Modal: React.FC = () => {
 
             <button
               onClick={() => openModal("contactform")}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.5)] transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer"
             >
               Start Discovery Consultation
             </button>
@@ -147,7 +147,7 @@ const Modal: React.FC = () => {
 
             <button
               onClick={() => openModal("contactform")}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.5)] transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer"
             >
               Request Design Review
             </button>
@@ -181,7 +181,7 @@ const Modal: React.FC = () => {
 
             <button
               onClick={() => openModal("contactform")}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.5)] transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer"
             >
               Consult with Senior Engineers
             </button>
@@ -215,7 +215,7 @@ const Modal: React.FC = () => {
 
             <button
               onClick={() => openModal("contactform")}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.5)] transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer"
             >
               Schedule Launch Prep
             </button>
@@ -392,7 +392,7 @@ const Modal: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#EF5613] to-[#FF7A3D] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.5)] transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
                   <FiSend className="w-4 h-4" />
                   <span>Send Project Request</span>

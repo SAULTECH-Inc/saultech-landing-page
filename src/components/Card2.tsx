@@ -67,7 +67,7 @@ const Card2: React.FC<CardProps> = ({ cardsData }) => {
           <div
             key={card.id}
             onClick={() => openModal("intouch")}
-            className="group relative rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/50 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.15)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+            className="group relative rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.15)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-5">

@@ -22,11 +22,10 @@ const Card3: React.FC<CardProps> = ({ cardsData }) => {
       {cardsData.map((card) => (
         <div
           key={card.id}
-          className="group relative rounded-2xl bg-gradient-to-b from-[#11202B] to-[#0A1621] border border-white/10 hover:border-[#EF5613]/50 overflow-hidden transition-all duration-300 hover:shadow-[0_16px_48px_rgba(239,86,19,0.18)] hover:-translate-y-1 flex flex-col"
+          className="group relative rounded-2xl bg-[#101F2B] border border-white/10 hover:border-[#EF5613] overflow-hidden transition-all duration-300 hover:shadow-[0_16px_48px_rgba(239,86,19,0.18)] hover:-translate-y-1 flex flex-col"
         >
           {/* Project Preview Image Header */}
-          <div className="relative w-full h-[260px] sm:h-[320px] bg-[#071118] overflow-hidden flex items-center justify-center p-6">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#11202B] via-transparent to-transparent z-10" />
+          <div className="relative w-full h-[260px] sm:h-[320px] bg-[#071118] border-b border-white/10 overflow-hidden flex items-center justify-center p-6">
             <img
               src={card.image}
               alt={card.title}

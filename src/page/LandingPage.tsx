@@ -66,12 +66,8 @@ const LandingPage: React.FC = () => {
       {/* Global Interactive Modal */}
       <Modal />
 
-      {/* Ambient background glow orbs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#EF5613]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute top-[1800px] right-[-100px] w-[500px] h-[500px] bg-[#EF5613]/5 rounded-full blur-[160px] pointer-events-none -z-10" />
-
       {/* Sticky Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-[#08141C]/85 backdrop-blur-md border-b border-white/5 transition-all">
+      <header className="sticky top-0 z-40 w-full bg-[#08141C] border-b border-white/10 transition-all">
         <div className="w-[92%] max-w-7xl mx-auto h-20 flex items-center justify-between">
           {/* Logo */}
           <Link
@@ -81,7 +77,7 @@ const LandingPage: React.FC = () => {
             duration={500}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#EF5613] to-[#FF8A05] flex items-center justify-center font-black text-xl text-white shadow-[0_0_20px_rgba(239,86,19,0.4)] group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-[#EF5613] flex items-center justify-center font-black text-xl text-white shadow-[0_0_16px_rgba(239,86,19,0.35)] group-hover:scale-105 transition-transform">
               S
             </div>
             <span className="font-extrabold text-2xl tracking-tight text-white group-hover:text-[#EF5613] transition-colors">
@@ -266,7 +262,7 @@ const LandingPage: React.FC = () => {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
             Custom Software Development Services for{" "}
-            <span className="bg-gradient-to-r from-[#EF5613] via-[#ff783d] to-[#FFA203] bg-clip-text text-transparent">
+            <span className="text-[#EF5613]">
               Your Business.
             </span>
           </h1>
@@ -279,7 +275,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-4 mt-8 w-full sm:w-auto">
             <Button
               onClick={() => openModal("intouch")}
-              className="w-full sm:w-auto px-8 py-3.5 text-base shadow-[0_0_30px_rgba(239,86,19,0.4)]"
+              className="w-full sm:w-auto px-8 py-3.5 text-base"
             >
               Let's Talk &rarr;
             </Button>
@@ -313,8 +309,7 @@ const LandingPage: React.FC = () => {
 
         {/* Hero Visual Art */}
         <div className="w-full lg:w-[42%] flex justify-center items-center relative">
-          <div className="absolute inset-0 bg-[#EF5613]/15 rounded-3xl blur-3xl -z-10" />
-          <div className="relative rounded-3xl border border-white/10 p-4 bg-gradient-to-b from-[#11202B]/80 to-[#0A1621]/80 backdrop-blur-sm shadow-2xl hover:border-[#EF5613]/40 transition-colors">
+          <div className="relative rounded-3xl border border-white/10 p-4 bg-[#101F2B] shadow-2xl hover:border-[#EF5613] transition-colors">
             <img
               src={Group_1}
               alt="SaulTech Engineering Architecture"
@@ -363,7 +358,7 @@ const LandingPage: React.FC = () => {
             <div
               key={item.id}
               onClick={() => openModal(item.id)}
-              className="group relative rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/60 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between"
+              className="group relative rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -461,7 +456,7 @@ const LandingPage: React.FC = () => {
           {testimonialsData.map((item) => (
             <div
               key={item.id}
-              className="rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
+              className="rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
             >
               <div>
                 {/* 5-Star Rating */}
@@ -496,10 +491,7 @@ const LandingPage: React.FC = () => {
 
       {/* CALL TO ACTION BANNER */}
       <section className="w-[92%] max-w-7xl mx-auto my-12">
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#14232F] via-[#101F2B] to-[#0D1822] border border-[#EF5613]/40 p-8 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(239,86,19,0.15)] flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Subtle glowing orb */}
-          <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#EF5613]/20 rounded-full blur-3xl pointer-events-none" />
-
+        <div className="relative rounded-3xl bg-[#101F2B] border border-[#EF5613] p-8 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(239,86,19,0.15)] flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl text-center lg:text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-[#EF5613]">
               Have a Project in Mind?
@@ -515,7 +507,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Button
               onClick={() => openModal("contactform")}
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold shadow-[0_0_30px_rgba(239,86,19,0.5)]"
+              className="w-full sm:w-auto px-8 py-4 text-sm font-bold shadow-[0_0_24px_rgba(239,86,19,0.35)]"
             >
               Get in Touch with Us
             </Button>
@@ -543,7 +535,7 @@ const LandingPage: React.FC = () => {
             {/* Column 1: Brand & Bio */}
             <div className="lg:col-span-2 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#EF5613] to-[#FF8A05] flex items-center justify-center font-black text-lg text-white">
+                <div className="w-9 h-9 rounded-xl bg-[#EF5613] flex items-center justify-center font-black text-lg text-white">
                   S
                 </div>
                 <span className="font-extrabold text-2xl tracking-tight text-white">
