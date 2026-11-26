@@ -31,6 +31,7 @@ import {
   FiPhone,
   FiMail,
   FiMapPin,
+  FiSettings,
 } from "react-icons/fi";
 
 const stepIcons: Record<string, React.ReactNode> = {
@@ -129,10 +130,10 @@ const LandingPage: React.FC = () => {
               smooth={true}
               offset={-80}
               duration={500}
-              className="text-sm font-medium text-[#EF5613] hover:text-white cursor-pointer transition-colors relative py-1 group flex items-center gap-1 font-bold"
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
             >
-              <span>🤸 Kinetic Motion</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EF5613] animate-ping" />
+              Infrastructure
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
               to="process"
@@ -245,10 +246,9 @@ const LandingPage: React.FC = () => {
               offset={-80}
               duration={500}
               onClick={closeMobileMenu}
-              className="text-base font-bold text-[#EF5613] hover:text-white py-2 border-b border-white/5 cursor-pointer flex items-center justify-between"
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
             >
-              <span>🤸 Kinetic Motion Arena</span>
-              <span className="w-2 h-2 rounded-full bg-[#EF5613] animate-ping" />
+              Infrastructure &amp; CI/CD
             </Link>
             <Link
               to="process"
@@ -355,41 +355,38 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Hero Visual Art with Live Bouncing Badges & Rotating Gears */}
+        {/* Hero Visual Art with Live Floating Telemetry Badges */}
         <div className="w-full lg:w-[42%] flex justify-center items-center relative">
-          {/* Floating Kinetic Badge 1 (Top Left) */}
           <motion.div
-            animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }}
-            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+            animate={{ y: [-7, 7, -7] }}
+            transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
             className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 z-20 px-3.5 py-2 rounded-2xl bg-[#08141C] border border-[#EF5613] text-white text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>⚡ 48,500 TPS Core</span>
+            <span className="font-mono">48,500 TPS Core</span>
           </motion.div>
 
-          {/* Floating Kinetic Badge 2 (Bottom Right) */}
           <motion.div
-            animate={{ y: [8, -8, 8], rotate: [1, -1, 1] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            animate={{ y: [7, -7, 7] }}
+            transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut" }}
             className="absolute -bottom-3 -right-3 sm:-bottom-5 sm:-right-5 z-20 px-3.5 py-2 rounded-2xl bg-[#08141C] border border-white/20 text-white text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
           >
-            <span>🤸 60 FPS Micro-Interactions</span>
+            <span className="font-mono">99.99% Uptime SLA</span>
           </motion.div>
 
-          {/* Floating Rotating Mechanical Gear Badge (Bottom Left) */}
           <motion.div
-            animate={{ y: [-5, 5, -5] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            animate={{ y: [-4, 4, -4] }}
+            transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
             className="absolute -bottom-3 left-6 sm:-bottom-5 z-20 px-3 py-1.5 rounded-xl bg-[#101F2B] border border-white/10 text-[11px] font-mono text-gray-300 shadow-xl flex items-center gap-2 select-none"
           >
             <motion.span
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
-              className="text-[#EF5613] inline-block font-bold text-sm"
+              className="text-[#EF5613] inline-flex items-center justify-center"
             >
-              ⚙️
+              <FiSettings className="w-3.5 h-3.5" />
             </motion.span>
-            <span>Torque Sync: 100%</span>
+            <span>Zero-Downtime CI/CD</span>
           </motion.div>
 
           <div className="relative rounded-3xl border border-white/10 p-4 bg-[#101F2B] shadow-2xl hover:border-[#EF5613] transition-colors">
@@ -712,8 +709,8 @@ const LandingPage: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="kinetic-lab" spy={true} smooth={true} offset={-80} duration={500} className="text-[#EF5613] font-bold hover:text-white transition-colors cursor-pointer">
-                    🤸 Kinetic Motion Arena
+                  <Link to="kinetic-lab" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Infrastructure Engine
                   </Link>
                 </li>
                 <li>

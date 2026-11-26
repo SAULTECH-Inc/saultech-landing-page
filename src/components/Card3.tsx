@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { useModalStore } from "./useModalStore";
 import { flagshipApps, FlagshipProduct } from "../utils/Card1Data";
 import { PhoneFrame, LaptopFrame } from "./DeviceFrames";
@@ -144,11 +145,11 @@ const Card3: React.FC = () => {
           {/* Floating Breakout Badges */}
           <div className="absolute top-4 left-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-[#EF5613] text-white text-[11px] font-bold shadow-xl">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>⚡ {currentApp.name} Live Engine</span>
+            <span>{currentApp.name} Live Engine</span>
           </div>
 
           <div className="absolute top-4 right-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-white/15 text-gray-300 text-[11px] font-mono shadow-xl">
-            <span>🔒 Production Cloud Cluster</span>
+            <span>Production Cloud Cluster</span>
           </div>
 
           {/* Subtle Canvas Grid Background */}
@@ -163,8 +164,12 @@ const Card3: React.FC = () => {
 
           {/* DUAL DEVICE OR LAPTOP VIEW */}
           {(deviceMode === "dual" || deviceMode === "laptop" || !hasMobile) && (
-            <div
-              className={`w-full transition-all duration-300 ${
+            <motion.div
+              key={`laptop-${selectedAppId}`}
+              initial={{ opacity: 0, y: 16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              className={`w-full ${
                 deviceMode === "dual" && hasMobile
                   ? "lg:max-w-[75%] lg:mr-28"
                   : "max-w-4xl"
@@ -640,15 +645,20 @@ const Card3: React.FC = () => {
                   </div>
                 )}
               </LaptopFrame>
-            </div>
+            </motion.div>
           )}
 
           {/* REAL IPHONE MOBILE APP VIEW */}
           {(deviceMode === "dual" || deviceMode === "phone") && hasMobile && (
-            <div
-              className={`transition-all duration-300 ${
+            <motion.div
+              key={`phone-${selectedAppId}`}
+              initial={{ opacity: 0, x: 24, rotate: -4 }}
+              animate={{ opacity: 1, x: 0, rotate: deviceMode === "dual" ? -2 : 0 }}
+              whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className={`${
                 deviceMode === "dual"
-                  ? "hidden lg:block absolute -right-2 xl:right-6 top-1/2 -translate-y-1/2 z-20 -rotate-2 hover:rotate-0 transition-transform duration-300 shadow-[0_30px_70px_rgba(0,0,0,0.9)] scale-95 hover:scale-100"
+                  ? "hidden lg:block absolute -right-2 xl:right-6 top-1/2 -translate-y-1/2 z-20 shadow-[0_30px_70px_rgba(0,0,0,0.9)]"
                   : "w-full max-w-xs"
               }`}
             >
@@ -843,7 +853,7 @@ const Card3: React.FC = () => {
                   </div>
                 )}
               </PhoneFrame>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>
