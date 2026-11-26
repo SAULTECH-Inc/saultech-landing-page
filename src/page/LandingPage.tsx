@@ -1,27 +1,53 @@
-import React from "react";
-import { Discovery, Group_1, Right_arrow, Whatsapp } from "../assets/svg";
+import React, { useState } from "react";
+import { Group_1, Whatsapp } from "../assets/svg";
 import Button from "../common/Button";
 import Card1 from "../components/Card1";
-import { card2Data, cards3Data, cardsData } from "../utils/Card1Data";
 import Card2 from "../components/Card2";
 import Card3 from "../components/Card3";
 import Modal from "../components/Modal";
 import { useModalStore } from "../components/useModalStore";
+import {
+  card2Data,
+  cards3Data,
+  cardsData,
+  testimonialsData,
+  processData,
+  companyStats,
+} from "../utils/Card1Data";
 import { Link } from "react-scroll";
-import { motion, useMotionValueEvent } from "framer-motion";
-import { useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
+import {
+  FiMenu,
+  FiX,
+  FiArrowRight,
+  FiStar,
+  FiCompass,
+  FiPenTool,
+  FiCode,
+  FiShield,
+  FiPhone,
+  FiMail,
+  FiMapPin,
+} from "react-icons/fi";
+
+const stepIcons: Record<string, React.ReactNode> = {
+  discovery: <FiCompass className="w-6 h-6 text-[#EF5613]" />,
+  design: <FiPenTool className="w-6 h-6 text-[#EF5613]" />,
+  development: <FiCode className="w-6 h-6 text-[#EF5613]" />,
+  testing: <FiShield className="w-6 h-6 text-[#EF5613]" />,
+};
 
 const LandingPage: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
   const { scrollYProgress } = useScroll();
-  const { scrollY } = useScroll();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Page scroll: ", latest);
-  });
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <div className="w-full pb-[100px] bg-[#08141C] text-[#FFFFFF] min-h-screen flex flex-col items-center">
+    <div className="w-full bg-[#08141C] text-[#FFFFFF] min-h-screen flex flex-col items-center selection:bg-[#EF5613] selection:text-white relative overflow-x-hidden">
+      {/* Top Reading Progress Bar */}
       <motion.div
         id="scroll-indicator"
         style={{
@@ -30,240 +56,614 @@ const LandingPage: React.FC = () => {
           top: 0,
           left: 0,
           right: 0,
-          height: 10,
+          height: 4,
           originX: 0,
           backgroundColor: "#EF5613",
+          zIndex: 60,
         }}
-      />{" "}
-      <nav className="w-[90%] min-h-[113px] xs:h-[125px] flex items-center justify-between">
-        <div className="font-semibold text-[32px] text-[#EF5613]">SAULTECH</div>
-        <div className="hidden w-[60%] md:flex justify-between">
-          <div className=" w-[347px] flex justify-between self-center">
-            <p className="relative inline-block pb-1 group cursor-pointer">
-              <Link
-                to="services"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                className="font-medium"
-              >
-                Our Services
-              </Link>
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-[80%] border-b-4 border-[#EF5613] transition-all duration-300"></span>
-            </p>
-            <p className="relative inline-block pb-1 group cursor-pointer">
-              <Link
-                to="company"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                className="font-medium"
-              >
-                Company
-              </Link>
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-[80%] border-b-4 border-[#EF5613] transition-all duration-300"></span>
-            </p>
-            <p className="relative inline-block pb-1 group cursor-pointer">
-              <Link
-                to="portfolio"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                className="font-medium"
-              >
-                Porfolio
-              </Link>
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-[80%] border-b-4 border-[#EF5613] transition-all duration-300"></span>
-            </p>
+      />
+
+      {/* Global Interactive Modal */}
+      <Modal />
+
+      {/* Ambient background glow orbs */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#EF5613]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-[1800px] right-[-100px] w-[500px] h-[500px] bg-[#EF5613]/5 rounded-full blur-[160px] pointer-events-none -z-10" />
+
+      {/* Sticky Navigation Bar */}
+      <header className="sticky top-0 z-40 w-full bg-[#08141C]/85 backdrop-blur-md border-b border-white/5 transition-all">
+        <div className="w-[92%] max-w-7xl mx-auto h-20 flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            to="hero"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="flex items-center gap-2 cursor-pointer group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#EF5613] to-[#FF8A05] flex items-center justify-center font-black text-xl text-white shadow-[0_0_20px_rgba(239,86,19,0.4)] group-hover:scale-105 transition-transform">
+              S
+            </div>
+            <span className="font-extrabold text-2xl tracking-tight text-white group-hover:text-[#EF5613] transition-colors">
+              SAUL<span className="text-[#EF5613]">TECH</span>
+            </span>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Our Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="process"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Our Process
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Portfolio
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="testimonials"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Testimonials
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="company"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+            >
+              Company
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          </nav>
+
+          {/* Desktop CTA Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Button
+              onClick={() => openModal("intouch")}
+              className="px-6 py-2.5 text-sm"
+            >
+              Contact Us
+            </Button>
           </div>
-          <Button onClick={() => openModal("intouch")} className="w-[160px]">
-            Contact Us
-          </Button>
+
+          {/* Mobile Hamburger Toggle Button */}
+          <div className="flex lg:hidden items-center gap-3">
+            <Button
+              onClick={() => openModal("intouch")}
+              className="px-4 py-2 text-xs"
+            >
+              Let's Talk
+            </Button>
+            <button
+              onClick={toggleMobileMenu}
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-[#EF5613] transition-colors cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
-      </nav>
-      <div className="hidden md:block w-[90%]  mt-[61px] mb-4">
-        <div className="border-t-4 w-[57.5px] border-[#EF5613] "></div>
-      </div>
-      <section className="sm:hidden w-full bg-bgImg1 bg-cover bg-right bg-repeat flex items-center ">
-        <div className="w-full min-h-[337px] bg-[#363A3DE5] flex flex-col justify-center items-center py-4">
-          <h1 className="w-[70%]  max-w-[356px] text-center font-bold text-[24px]">
-            Custom Software Development Services for Your Business.
-          </h1>
-          <p className="text-[13px] text-center w-[70%] max-w-[356px] mt-[20px]">
-            Blazing-fast software development for individuals and businesses of
-            all sizes, backed by 24/7/365 support.
-          </p>
-          <Button
-            onClick={() => openModal("intouch")}
-            className="w-[146px] h-[41px] mt-[25px] flex justify-center items-center"
+
+        {/* Mobile Slide-down Drawer */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden border-t border-white/10 bg-[#08141C] px-6 py-6 flex flex-col gap-4 shadow-2xl"
           >
-            Let's Talk
-          </Button>
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Our Services
+            </Link>
+            <Link
+              to="process"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Our Process
+            </Link>
+            <Link
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Portfolio & Case Studies
+            </Link>
+            <Link
+              to="testimonials"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              Testimonials
+            </Link>
+            <Link
+              to="company"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              onClick={closeMobileMenu}
+              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            >
+              About Company
+            </Link>
+            <Button
+              onClick={() => {
+                closeMobileMenu();
+                openModal("intouch");
+              }}
+              className="w-full py-3 mt-2 text-sm"
+            >
+              Get in Touch with Us
+            </Button>
+          </motion.div>
+        )}
+      </header>
+
+      {/* HERO SECTION */}
+      <section
+        id="hero"
+        className="w-[92%] max-w-7xl mx-auto pt-12 md:pt-20 pb-16 md:pb-24 flex flex-col lg:flex-row items-center justify-between gap-12"
+      >
+        <div className="w-full lg:w-[58%] flex flex-col items-start text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm font-medium text-gray-300 mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#EF5613] animate-pulse" />
+            <span>Next-Generation Software Engineering & Consulting</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+            Custom Software Development Services for{" "}
+            <span className="bg-gradient-to-r from-[#EF5613] via-[#ff783d] to-[#FFA203] bg-clip-text text-transparent">
+              Your Business.
+            </span>
+          </h1>
+
+          <p className="text-base sm:text-lg text-gray-300 mt-6 leading-relaxed max-w-xl">
+            Blazing-fast, enterprise-grade software development for high-growth startups and established enterprises — engineered for scalability and backed by 24/7/365 dedicated support.
+          </p>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-4 mt-8 w-full sm:w-auto">
+            <Button
+              onClick={() => openModal("intouch")}
+              className="w-full sm:w-auto px-8 py-3.5 text-base shadow-[0_0_30px_rgba(239,86,19,0.4)]"
+            >
+              Let's Talk &rarr;
+            </Button>
+
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={500}
+              className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all text-sm font-semibold cursor-pointer"
+            >
+              Explore Our Services
+            </Link>
+          </div>
+
+          {/* Metrics Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 mt-10 border-t border-white/10 w-full">
+            {companyStats.map((stat, idx) => (
+              <div key={idx} className="flex flex-col">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#EF5613]">
+                  {stat.value}
+                </span>
+                <span className="text-xs text-gray-400 mt-1 font-medium">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Hero Visual Art */}
+        <div className="w-full lg:w-[42%] flex justify-center items-center relative">
+          <div className="absolute inset-0 bg-[#EF5613]/15 rounded-3xl blur-3xl -z-10" />
+          <div className="relative rounded-3xl border border-white/10 p-4 bg-gradient-to-b from-[#11202B]/80 to-[#0A1621]/80 backdrop-blur-sm shadow-2xl hover:border-[#EF5613]/40 transition-colors">
+            <img
+              src={Group_1}
+              alt="SaulTech Engineering Architecture"
+              className="w-full h-auto max-h-[460px] object-contain drop-shadow-2xl"
+            />
+          </div>
         </div>
       </section>
-      <section className="hidden w-[90%] sm:flex">
-        <div className="w-[100%] flex flex-col">
-          <h1 className="w-[80%] md:w-[75%] lg:w-[84%] xl:w-[80%] font-bold text-[24px] md:text-[32px] lg:text-[52px] xl:text-[64px] lg:leading-[50px] xl:leading-[77.5px]">
-            Custom Software Development Services for Your Business.
-          </h1>
-          <p className="text-[13px] w-[80%] xl:w-[38%] mt-[20px]">
-            Blazing-fast software development for individuals and businesses of
-            all sizes, backed by 24/7/365 support.
-          </p>
-          <Button
-            onClick={() => openModal("intouch")}
-            className="w-[146px] h-[41px] md:w-[228px] mt-[15px] lg:mt-[40px] flex justify-center items-center"
-          >
-            Let's Talk
-          </Button>
+
+      {/* CORE VALUE PROPOSITIONS / CARDS */}
+      <section className="w-[92%] max-w-7xl mx-auto py-12">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Engineered For Excellence
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
+            Why Forward-Thinking Brands Choose SaulTech
+          </h2>
+          <div className="w-16 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
         </div>
-        <div className="">
-          <img src={Group_1} alt="Group 1" />
-        </div>
-      </section>
-      <section className="w-[90%] mt-[54px]">
+
         <Card1 cardsData={cardsData} />
       </section>
-      <section className="w-[90%] mt-[80px] flex flex-col items-center">
-        <Modal />
-        <p className="text-[20px] md:text-[50px] font-semibold leading-[60px]">
-          Our Process
-        </p>
-        <div className="w-[225px] md:w-[583px] flex justify-center md:py-3 border-b-4 border-[#EF5613]"></div>
-        <div className="relative w-[350px] md:w-[750px] mt-[87px] flex flex-col items-center md:gap-10">
-          <div className="absolute inset-0 m-auto w-[180px] h-[180px] md:w-[400px] md:h-[400px] border-[5px] border-[#EF5613] rotate-45"></div>
-          <div
-            onClick={() => openModal("discovery")}
-            className="relative z-[5] sm:z-10 md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-full bg-[#450D01]  hover:bg-[#f3a17e] cursor-pointer border-[5px] border-[#EF5613] flex flex-col justify-center items-center gap-3 md:gap-6"
-          >
-            <img src={Discovery} alt="Discovery" />
-            <p>Discovery</p>
-            <img src={Right_arrow} alt="Right_arrow" />
-          </div>
-          <div className="flex justify-between w-full">
-            <div
-              onClick={() => openModal("design")}
-              className="relative z-[5] sm:z-10 md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-full bg-[#450D01]  hover:bg-[#f3a17e] cursor-pointer border-[5px] border-[#EF5613] flex flex-col justify-center items-center gap-3 md:gap-6"
-            >
-              <img src={Discovery} alt="Discovery" />
-              <p>Design</p>
-              <img src={Right_arrow} alt="Right_arrow" />
-            </div>
-            <div
-              onClick={() => openModal("development")}
-              className="relative z-[5] sm:z-10 md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-full bg-[#450D01]  hover:bg-[#f3a17e] cursor-pointer border-[5px] border-[#EF5613] flex flex-col justify-center items-center gap-3 md:gap-6"
-            >
-              <img src={Discovery} alt="Discovery" />
-              <p>Development</p>
-              <img src={Right_arrow} alt="Right_arrow" />
-            </div>
-          </div>
-          <div
-            onClick={() => openModal("testing")}
-            className="relative z-[5] sm:z-10 md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-full bg-[#450D01]  hover:bg-[#f3a17e] cursor-pointer border-[5px] border-[#EF5613] flex flex-col justify-center items-center gap-3 md:gap-6"
-          >
-            <img src={Discovery} alt="Discovery" />
-            <p>Testing</p>
-            <img src={Right_arrow} alt="Right_arrow" />
-          </div>
-        </div>
-      </section>
+
+      {/* OUR PROCESS SECTION */}
       <section
-        className="w-[98%] mt-[80px] flex flex-col items-center"
-        id="services"
+        id="process"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
-        <p className="text-[20px] md:text-[50px] font-semibold leading-[60px]">
-          Services We Offer
-        </p>
-        <div className="w-[225px] md:w-[583px] md:pt-3 flex justify-center border-b-4 border-[#EF5613]"></div>
-        <div className="w-[100%] mt-[32px] lg:mt-[108px]">
-          <Card2 cardsData={card2Data} />
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Methodology
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
+            Our Agile Engineering Process
+          </h2>
+          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-300 mt-4">
+            We follow a transparent, battle-tested product development lifecycle designed to minimize risk and accelerate time-to-market.
+          </p>
+        </div>
+
+        {/* Interactive 4-Step Process Pipeline */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {processData.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => openModal(item.id)}
+              className="group relative rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/60 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#08141C] border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#EF5613]/50 transition-all duration-300">
+                    {stepIcons[item.id]}
+                  </div>
+                  <span className="text-3xl font-black text-white/15 group-hover:text-[#EF5613]/40 transition-colors">
+                    {item.step}
+                  </span>
+                </div>
+
+                <span className="text-xs font-semibold text-[#EF5613] uppercase tracking-wider">
+                  {item.tagline}
+                </span>
+
+                <h3 className="font-bold text-xl text-white mt-1 group-hover:text-[#EF5613] transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-gray-300 mt-3 leading-relaxed">
+                  {item.summary}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-gray-400 group-hover:text-[#EF5613] transition-colors">
+                <span>Phase Breakdown</span>
+                <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
-      <section className="w-[90%] mt-[80px] flex flex-col items-center">
-        <p
-          className="text-[20px] sm:text-[50px] md:pt-3 font-semibold leading-[60px] "
-          id="portfolio"
-        >
-          Our Portfolio
-        </p>
-        <div className="w-[225px] sm:w-[440px] flex justify-center sm:pt-1 border-b-4 border-[#EF5613]"></div>
-        <p className="w-[90.2%] sm:w-[487px] mt-10 text-center text-[12px] sm:text-[13px] leading-[19px] font-semibold">
-          We are a reliable software agency committed to building and developing
-          high-quality software for our clients. our experience developers and
-          designers work diligently to deliver custom solutions that meet all
-          your business needs.
-        </p>
+
+      {/* SERVICES SECTION */}
+      <section
+        id="services"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
+      >
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Capabilities
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
+            Comprehensive Services We Offer
+          </h2>
+          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-300 mt-4">
+            End-to-end digital solutions spanning frontend, backend, native mobile, cloud infrastructure, and intelligent automation.
+          </p>
+        </div>
+
+        <Card2 cardsData={card2Data} />
       </section>
-      <section className="w-full md:mt-[80px] flex flex-col items-center">
+
+      {/* PORTFOLIO SECTION */}
+      <section
+        id="portfolio"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
+      >
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Proven Track Record
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
+            Featured Work & Case Studies
+          </h2>
+          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-300 mt-4">
+            A glimpse into the robust digital platforms and mobile applications crafted by our senior development team.
+          </p>
+        </div>
+
         <Card3 cardsData={cards3Data} />
       </section>
-      <section className="w-[90%] sm:mt-[40px] md:mt-[80px] flex flex-col items-center">
-        <div className="w-full flex flex-col items-center">
-          <p className="text-[20px] sm:text-[50px] md:pt-3 font-semibold md:leading-[60px]">
-            Client Testimonial
-          </p>
-          <div className="w-[225px] sm:w-[583px] flex justify-center border-b-4 border-[#EF5613]"></div>
-        </div>
-      </section>
-      <section className="relative w-[90%] max-w-6xl mx-auto mt-[40px] md:mt-[80px] flex flex-col items-center">
-        <div className="w-full bg-white rounded-[16px] py-10 flex flex-col items-center  justify-center">
-          <p className="w-[60%] md:w-[70%] text-[#2E2E2E] md:text-5xl lg:text-[64px] font-semibold text-center md:my-[40px]">
-            Interested in discussing about a projects?
-          </p>
-          <button className="flex w-[208px] gap-1 h-12 bg-[#EF5613] items-center justify-center rounded-[8px] mt-[20px] lg:my-[40px]">
-            <img src={Whatsapp} alt="Whatsapp" />
-            Get in touch with us
-          </button>
-        </div>
-        <div className="absolute left-[-1%] bottom-[20%] w-0 h-0 border-b-[20px] md:border-b-[40px] border-b-[#EF5613] border-r-[20px] md:border-r-[40px] border-r-transparent"></div>
 
-        <div className="absolute left-[33%] translate-x-[-50%] w-0 h-0 border-b-[20px] md:border-b-[40px] border-b-[#EF5613] border-l-[20px] md:border-l-[40px] border-l-transparent"></div>
-
-        <div className="absolute right-[-1%] bottom-[15%] w-0 h-0 border-b-[36px] md:border-b-[72px] border-b-[#EF5613] border-l-[36px] md:border-l-[72px] border-l-transparent"></div>
-      </section>
-      <footer
-        className="relative text-[#E5E5E5] w-[90%] max-w-6xl mx-auto mt-[40px] md:mt-[80px] flex flex-col"
-        id="company"
+      {/* CLIENT TESTIMONIALS SECTION */}
+      <section
+        id="testimonials"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="md:w-[26%] mb-3 md:mb-0 md:flex flex-col md:gap-10">
-            <p className="font-semibold text-white text-[20px] md:text-[32px] leading-[32px]">
-              SAULTECH
-            </p>
-            <p>
-              SaulTech offers expert software consulting, delivering custom
-              solutions, digital transformation, and innovative strategies to
-              enhance efficiency, scalability, security, and business growth
-              through technology.
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Social Proof
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
+            What Our Clients Say
+          </h2>
+          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-300 mt-4">
+            Trusted by founders, tech executives, and product leaders across high-growth industries.
+          </p>
+        </div>
+
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonialsData.map((item) => (
+            <div
+              key={item.id}
+              className="rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
+            >
+              <div>
+                {/* 5-Star Rating */}
+                <div className="flex items-center gap-1 text-[#FFA203] mb-4">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <FiStar key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+
+                <p className="text-sm sm:text-base text-gray-300 italic leading-relaxed">
+                  "{item.quote}"
+                </p>
+              </div>
+
+              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/5">
+                <img
+                  src={item.avatar}
+                  alt={item.name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-[#EF5613]/40"
+                />
+                <div>
+                  <h4 className="font-bold text-sm text-white">{item.name}</h4>
+                  <p className="text-xs text-gray-400">
+                    {item.role}, <span className="text-gray-300">{item.company}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CALL TO ACTION BANNER */}
+      <section className="w-[92%] max-w-7xl mx-auto my-12">
+        <div className="relative rounded-3xl bg-gradient-to-r from-[#14232F] via-[#101F2B] to-[#0D1822] border border-[#EF5613]/40 p-8 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(239,86,19,0.15)] flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Subtle glowing orb */}
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#EF5613]/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-2xl text-center lg:text-left">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#EF5613]">
+              Have a Project in Mind?
+            </span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-2 leading-tight">
+              Let's Build Something Exceptional Together.
+            </h2>
+            <p className="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed">
+              Whether you need to launch a high-impact MVP, scale an existing platform, or augment your engineering capacity, our team is ready to deliver.
             </p>
           </div>
-          <div className="w-full md:w-[60%] flex flex-wrap justify-between gap-5">
-            <div className="flex flex-col gap-3">
-              <p className="font-bold text-white">Service</p>
-              <p>Web development</p>
-              <p>App development</p>
-              <p>UIUX Design</p>
-              <p>Cyber security</p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <Button
+              onClick={() => openModal("contactform")}
+              className="w-full sm:w-auto px-8 py-4 text-sm font-bold shadow-[0_0_30px_rgba(239,86,19,0.5)]"
+            >
+              Get in Touch with Us
+            </Button>
+
+            <a
+              href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <img src={Whatsapp} alt="WhatsApp" className="w-5 h-5" />
+              <span>Quick WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* MODERN FOOTER */}
+      <footer
+        id="company"
+        className="w-full border-t border-white/10 bg-[#061017] pt-16 pb-12 mt-12"
+      >
+        <div className="w-[92%] max-w-7xl mx-auto flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            {/* Column 1: Brand & Bio */}
+            <div className="lg:col-span-2 flex flex-col">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#EF5613] to-[#FF8A05] flex items-center justify-center font-black text-lg text-white">
+                  S
+                </div>
+                <span className="font-extrabold text-2xl tracking-tight text-white">
+                  SAUL<span className="text-[#EF5613]">TECH</span>
+                </span>
+              </div>
+              <p className="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
+                SaulTech provides premier software consulting, bespoke cloud development, digital transformation, and scalable engineering to power modern business growth.
+              </p>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-gray-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full w-fit">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span>Available for New Projects & Contracts</span>
+              </div>
             </div>
-            <div className="flex flex-col gap-3">
-              <p className="font-bold text-white">Office and Contact</p>
-              <p>Adamau waziri way 122,</p>
-              <p>07011079676</p>
-              <p>saultech@gmail.com</p>
+
+            {/* Column 2: Services */}
+            <div className="flex flex-col">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
+                Services
+              </h4>
+              <ul className="space-y-2.5 text-sm text-gray-400">
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  Custom Software
+                </li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  Web Applications
+                </li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  Mobile App Development
+                </li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  UI/UX Product Design
+                </li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  Cloud & DevOps
+                </li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
+                  AI & ML Integration
+                </li>
+              </ul>
             </div>
-            <div className="flex flex-col gap-3">
-              <p className="font-bold text-white">Help</p>
-              <p>FAQ</p>
-              <p>Help support</p>
+
+            {/* Column 3: Navigation */}
+            <div className="flex flex-col">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
+                Quick Links
+              </h4>
+              <ul className="space-y-2.5 text-sm text-gray-400">
+                <li>
+                  <Link to="hero" spy={true} smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="services" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="process" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Our Process
+                  </Link>
+                </li>
+                <li>
+                  <Link to="portfolio" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="testimonials" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
+                    Testimonials
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contact & Office */}
+            <div className="flex flex-col">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
+                Contact Office
+              </h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li className="flex items-start gap-2.5">
+                  <FiMapPin className="w-4 h-4 text-[#EF5613] mt-1 shrink-0" />
+                  <span>Adamawa Waziri Way 122, Nigeria</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <FiPhone className="w-4 h-4 text-[#EF5613] shrink-0" />
+                  <a href="tel:07011079676" className="hover:text-white transition-colors">
+                    +234 701 107 9676
+                  </a>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <FiMail className="w-4 h-4 text-[#EF5613] shrink-0" />
+                  <a href="mailto:saultech@gmail.com" className="hover:text-white transition-colors">
+                    saultech@gmail.com
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <button
+                    onClick={() => openModal("contactform")}
+                    className="text-xs font-semibold text-[#EF5613] hover:underline cursor-pointer"
+                  >
+                    Open Support Request &rarr;
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+            <p>&copy; {new Date().getFullYear()} SaulTech. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <span className="hover:text-gray-300 cursor-pointer">Privacy Policy</span>
+              <span className="hover:text-gray-300 cursor-pointer">Terms of Service</span>
+              <span className="hover:text-gray-300 cursor-pointer">Security Overview</span>
             </div>
           </div>
         </div>
-        <hr className="bg-white my-[25px] md:my-[53px] w-full" />
-        <p className="self-start text-[#FFFFFF]">Saultech. Copyright 2025</p>
       </footer>
     </div>
   );

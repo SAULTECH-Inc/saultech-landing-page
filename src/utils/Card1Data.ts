@@ -6,26 +6,24 @@ export const cardsData = [
     image: Imac,
     title: "Bespoke Software",
     content:
-      "Our expert agile developers Agile Developers create the ideal web applications and mobile software solutions that bolster your business performance, ease your business process and provide quality to your users.",
-    services: ["MVP", "SaaS", "Cloud based apps", "Dedicated development team"],
-    // link="https://example.com"
+      "Our agile engineering team builds high-performance web applications and mobile solutions that elevate your business performance, streamline operations, and deliver world-class user experiences.",
+    services: ["MVP", "SaaS", "Cloud-based Apps", "Dedicated Team"],
   },
   {
     id: 2,
     image: User_groups,
-    title: "Team Extention",
+    title: "Team Extension",
     content:
-      "Hire developers that improve your operations and instantly scale your team. We effectively handle all task relating to your business; develop bespoke software, hire developers, handle software maintenance, and provide cutting age software",
-    services: ["DevOps Outsourcing", "In-House Team", "Cost Optimization"],
-    // link="https://example.com"
+      "Hire top-tier developers that integrate seamlessly with your operations to rapidly scale your roadmap. We handle bespoke engineering, talent placement, and ongoing maintenance with cutting-edge standards.",
+    services: ["DevOps Outsourcing", "Embedded Engineers", "Cost Optimization"],
   },
   {
     id: 3,
     image: Workspace,
-    title: "DevOps.",
+    title: "DevOps & Cloud",
     content:
-      "Our comprehensive approach to devOps offer a range of exceptional, well-tasted infrastracture that meet your unique requirement. We help deliver reliable, top-performing, custom software solutions while keeping your costs as low as possible",
-    services: ["Custom architecture", "System Migration", "Cost Optimization"],
+      "Our comprehensive approach to DevOps provides automated, battle-tested infrastructure tailored to your exact requirements. We deliver resilient, high-uptime cloud solutions while optimizing infrastructure spend.",
+    services: ["Cloud Architecture", "System Migration", "CI/CD & Monitoring"],
   },
 ];
 
@@ -33,85 +31,162 @@ export const card2Data = [
   {
     id: 1,
     title: "Custom Software",
-    sub_title: " Development",
+    sub_title: "Development",
     content:
-        "We design, develop, and deploy custom software solutions tailored to your business needs. From web and mobile apps to enterprise systems, we ensure seamless functionality, scalability, and innovation.",
+      "We design, develop, and deploy enterprise-grade software solutions tailored to your unique workflows, driving efficiency and sustainable growth.",
   },
   {
     id: 2,
     title: "Web",
-    sub_title: " Development",
+    sub_title: "Development",
     content:
-        "We create responsive, high-performance websites and web applications tailored to your needs. From design to deployment, we ensure seamless user experience, scalability, and cutting-edge technology integration.",
+      "Lightning-fast, highly secure web applications built on modern frameworks with seamless responsiveness across all screen sizes.",
   },
   {
     id: 3,
-    title: "UI/UX ",
-    sub_title: " Design",
+    title: "UI/UX",
+    sub_title: "Design",
     content:
-        "We craft intuitive, user-centric designs that enhance experience and engagement. From wireframes to prototypes, we ensure seamless usability, aesthetics, and functionality for web and mobile applications.",
+      "Human-centered design systems, interactive prototypes, and captivating visuals crafted to turn casual visitors into loyal customers.",
   },
   {
     id: 4,
-    title: "Mobile App ",
-    sub_title: " Development",
+    title: "Mobile App",
+    sub_title: "Development",
     content:
-        "We build robust, cross-platform mobile applications that deliver exceptional user experiences. Whether iOS or Android, our apps are built for speed, reliability, and performance.",
+      "Native and cross-platform iOS and Android mobile apps engineered for fluid 60fps animations, intuitive navigation, and offline reliability.",
   },
   {
     id: 5,
-    title: "Cloud",
-    sub_title: " Solutions",
+    title: "Cloud & DevOps",
+    sub_title: "Solutions",
     content:
-        "We offer cloud-native solutions for deployment, scalability, and infrastructure automation. Our services include migration, DevOps, and serverless architecture tailored for modern businesses.",
+      "Automated CI/CD pipelines, container orchestration, Kubernetes, and cloud migration on AWS/GCP designed for 99.99% uptime.",
   },
   {
     id: 6,
     title: "E-commerce",
-    sub_title: " Platforms",
+    sub_title: "Platforms",
     content:
-        "We develop scalable, secure e-commerce platforms that drive online sales. From payment integration to product management and customer experience, we provide end-to-end solutions.",
+      "High-converting storefronts with streamlined multi-currency checkouts, inventory synchronization, and robust payment integrations.",
   },
   {
     id: 7,
-    title: "API",
-    sub_title: " Integration",
+    title: "API & Microservices",
+    sub_title: "Integration",
     content:
-        "We help connect your software ecosystem through efficient API design and third-party service integrations, enabling seamless communication between different systems and platforms.",
+      "Scalable RESTful & GraphQL APIs that unify your software ecosystem, enabling effortless communication across disparate platforms.",
   },
   {
     id: 8,
     title: "AI & ML",
-    sub_title: " Solutions",
+    sub_title: "Solutions",
     content:
-        "Leverage artificial intelligence and machine learning to automate tasks, analyze data, and enhance decision-making. We build custom models and integrate intelligent features into your applications.",
+      "Harness generative AI, predictive analytics, and automated smart agents to optimize business decisions and automate workflows.",
   },
   {
     id: 9,
-    title: "IT",
-    sub_title: " Consulting",
+    title: "IT Strategy &",
+    sub_title: "Consulting",
     content:
-        "Our consulting team helps you make strategic technology decisions. From digital transformation to IT audits and process optimization, we align your tech with your business goals.",
+      "Strategic tech advisory, code and architecture audits, and digital transformation roadmaps aligned with your long-term business goals.",
   },
 ];
-
 
 export const cards3Data = [
   {
     id: 1,
     image: DADC,
-    title: "Fundy INC",
+    title: "Fundy Inc.",
+    category: "Fintech Platform",
     content:
-        "Fundy is a secure fintech app in Africa, offering seamless payments, savings, and financial solutions to empower users.",
-    // link: "https://example.com"
+      "Fundy is a premier fintech mobile & web ecosystem in Africa, offering seamless peer-to-peer payments, high-yield savings, and automated micro-investing with bank-grade encryption.",
+    tags: ["React Native", "Node.js", "AWS", "Fintech"],
+    link: "#",
   },
   {
     id: 2,
     image: DAD,
-    title: "Gighub",
+    title: "GigHub Global",
+    category: "Talent & Marketplace",
     content:
-        "Gighub is a modern job search and professional networking platform where users can apply for jobs, connect with peers, and grow their careers.",
-    // link: "https://example.com"
+      "A next-generation job discovery and freelance networking marketplace connecting verified tech talent with global enterprises, featuring instant milestone contracts and AI skill matching.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "AI Match"],
+    link: "#",
   },
 ];
 
+export const processData = [
+  {
+    step: "01",
+    id: "discovery",
+    title: "Discovery",
+    tagline: "Strategic Alignment",
+    summary:
+      "We dive deep into your project vision, target market, competitors, and technical requirements to build a clear, outcome-focused roadmap.",
+  },
+  {
+    step: "02",
+    id: "design",
+    title: "Design",
+    tagline: "User-Centric Architecture",
+    summary:
+      "Our UI/UX specialists craft high-fidelity mockups, wireframes, and design systems focused on aesthetics, accessibility, and high conversion.",
+  },
+  {
+    step: "03",
+    id: "development",
+    title: "Development",
+    tagline: "Agile Engineering",
+    summary:
+      "We write clean, modular, and maintainable code with continuous testing, bi-weekly sprint demos, and real-time client collaboration.",
+  },
+  {
+    step: "04",
+    id: "testing",
+    title: "Testing & Launch",
+    tagline: "Quality Assurance",
+    summary:
+      "Rigorous end-to-end security audits, automated regression suites, load testing, and smooth production deployment with 24/7/365 support.",
+  },
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    name: "Amina Bello",
+    role: "Chief Operating Officer",
+    company: "Fundy Technologies",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
+    quote:
+      "SaulTech delivered our fintech application ahead of schedule with flawless security standards. Their agile methodology and transparent communication made the entire launch completely stress-free.",
+  },
+  {
+    id: 2,
+    name: "David O'Connor",
+    role: "VP of Engineering",
+    company: "GigHub Global",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80",
+    quote:
+      "Partnering with SaulTech for our platform overhaul was one of the best engineering decisions we've made. The architecture scales effortlessly under heavy traffic spikes, and user retention has doubled.",
+  },
+  {
+    id: 3,
+    name: "Tunde Adeyemi",
+    role: "Founder & CEO",
+    company: "Logix Africa",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80",
+    quote:
+      "Exceptional engineering standard. SaulTech's attention to detail in UI/UX polish and automated cloud DevOps saved our startup months of engineering runway. They are a true strategic partner.",
+  },
+];
+
+export const companyStats = [
+  { value: "99.8%", label: "Client Satisfaction" },
+  { value: "45+", label: "Products Launched" },
+  { value: "24/7", label: "Ongoing Support" },
+  { value: "4.9/5", label: "Average Review" },
+];

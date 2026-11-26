@@ -1,42 +1,92 @@
 import React from "react";
+import { useModalStore } from "./useModalStore";
+import { FiArrowUpRight, FiCheckCircle } from "react-icons/fi";
 
 interface CardProps {
   cardsData: {
-    id: number,
+    id: number;
     image: string;
     title: string;
+    category?: string;
     content: string;
+    tags?: string[];
     link?: string;
   }[];
 }
 
 const Card3: React.FC<CardProps> = ({ cardsData }) => {
-  return (
-    <div className="w-full flex flex-wrap lg:gap-10 justify-center">
-      {cardsData.map((card) => (
-        <div key={card.id} className="w-[90%] max-w-[604px] flex flex-col items-center sm:h-[560px] py-10 overflow-hidden">
-          <div className="w-full relative  max-h-[660px] flex flex-col">
-            <div>
-              <img src={card.image} alt="DADC" />
-            </div>
-            <div className="w-full absolute bottom-0 bg-[#363A3D] h-[160px] sm:h-[240px] rounded-t-[30px] flex flex-col pl-[14px] sm:pl-[50px] pt-[20px] pb-2  sm:pt-[44px] gap-1 sm:gap-3">
-              <h2 className="font-semibold text-[20px] leading-[32px]">
-                {card.title}
-              </h2>
-              <div className="border-t-4 w-[101px] border-[#EF5613]"></div>
+  const openModal = useModalStore((state) => state.openModal);
 
-              <p className="font-semibold text-[11px] sm:text-[13px] leading-[19px] w-[92%]">
+  return (
+    <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
+      {cardsData.map((card) => (
+        <div
+          key={card.id}
+          className="group relative rounded-2xl bg-gradient-to-b from-[#11202B] to-[#0A1621] border border-white/10 hover:border-[#EF5613]/50 overflow-hidden transition-all duration-300 hover:shadow-[0_16px_48px_rgba(239,86,19,0.18)] hover:-translate-y-1 flex flex-col"
+        >
+          {/* Project Preview Image Header */}
+          <div className="relative w-full h-[260px] sm:h-[320px] bg-[#071118] overflow-hidden flex items-center justify-center p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#11202B] via-transparent to-transparent z-10" />
+            <img
+              src={card.image}
+              alt={card.title}
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 relative z-0"
+            />
+            {card.category && (
+              <span className="absolute top-4 left-4 z-20 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#EF5613] text-white shadow-md">
+                {card.category}
+              </span>
+            )}
+          </div>
+
+          {/* Project Details Content */}
+          <div className="p-6 sm:p-8 flex flex-col flex-1 justify-between">
+            <div>
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-2xl text-white group-hover:text-[#EF5613] transition-colors">
+                  {card.title}
+                </h3>
+                <span className="flex items-center gap-1.5 text-xs text-green-400 font-medium bg-green-500/10 px-2.5 py-1 rounded-full border border-green-500/20">
+                  <FiCheckCircle className="w-3.5 h-3.5" />
+                  Live Product
+                </span>
+              </div>
+
+              <div className="w-12 h-1 bg-[#EF5613] rounded-full mt-3 mb-4" />
+
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                 {card.content}
               </p>
-              <a
-                href={card.link}
-                className="flex flex-col gap-2 cursor-pointer"
+
+              {card.tags && (
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {card.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
+              <button
+                onClick={() => openModal("intouch")}
+                className="flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[#EF5613] transition-colors cursor-pointer"
               >
-                <p className="font-semibold text-[16px] sm:text-[20px] leading-[19px]">
-                  Read Case Study
-                </p>
-                <div className="border w-[166px] border-white"></div>
-              </a>
+                <span>Request Case Study Details</span>
+                <FiArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+
+              <button
+                onClick={() => openModal("intouch")}
+                className="text-xs px-4 py-2 rounded-full border border-[#EF5613] text-[#EF5613] hover:bg-[#EF5613] hover:text-white transition-all font-medium cursor-pointer"
+              >
+                Build Similar
+              </button>
             </div>
           </div>
         </div>

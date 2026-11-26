@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { useModalStore } from "./useModalStore";
+import { FiCode, FiGlobe, FiLayout, FiSmartphone, FiCloud, FiShoppingCart, FiCpu, FiLayers, FiTrendingUp, FiArrowUpRight } from "react-icons/fi";
 
 interface CardProps {
   cardsData: {
@@ -10,165 +11,86 @@ interface CardProps {
   }[];
 }
 
+const serviceIcons: Record<number, React.ReactNode> = {
+  1: <FiCode className="w-6 h-6 text-[#EF5613]" />,
+  2: <FiGlobe className="w-6 h-6 text-[#EF5613]" />,
+  3: <FiLayout className="w-6 h-6 text-[#EF5613]" />,
+  4: <FiSmartphone className="w-6 h-6 text-[#EF5613]" />,
+  5: <FiCloud className="w-6 h-6 text-[#EF5613]" />,
+  6: <FiShoppingCart className="w-6 h-6 text-[#EF5613]" />,
+  7: <FiLayers className="w-6 h-6 text-[#EF5613]" />,
+  8: <FiCpu className="w-6 h-6 text-[#EF5613]" />,
+  9: <FiTrendingUp className="w-6 h-6 text-[#EF5613]" />,
+};
+
 const Card2: React.FC<CardProps> = ({ cardsData }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const openModal = useModalStore((state) => state.openModal);
-  
-  const extendedCards = [...cardsData, ...cardsData, ...cardsData];
-  const offset = cardsData.length;
-  
-  useEffect(() => {
-    setCurrentIndex(offset);
-    
-    if (carouselRef.current) {
-      carouselRef.current.style.transition = 'none';
-      carouselRef.current.style.transform = `translateX(-${offset * 100}%)`;
-      void carouselRef.current.offsetHeight;
-      carouselRef.current.style.transition = 'transform 500ms ease-out';
-    }
-  }, [offset]);
-  
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
-    const isSmallScreen = window.innerWidth < 1023;
+  const [activeCategory, setActiveCategory] = useState("all");
 
-    if (!isPaused && isSmallScreen) {
-      interval = setInterval(() => {
-        moveToSlide(currentIndex + 1);
-      }, 3000);
-    }
-    
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [isPaused, currentIndex]);
+  const categories = [
+    { id: "all", label: "All Services" },
+    { id: "dev", label: "Development", ids: [1, 2, 4] },
+    { id: "cloud-ai", label: "Cloud & AI", ids: [5, 7, 8] },
+    { id: "design-strategy", label: "Design & Strategy", ids: [3, 6, 9] },
+  ];
 
-  const handleTransitionEnd = () => {
-    if (currentIndex >= offset * 2) {
-      if (carouselRef.current) {
-        carouselRef.current.style.transition = 'none';
-        const newIndex = currentIndex - offset;
-        setCurrentIndex(newIndex);
-        carouselRef.current.style.transform = `translateX(-${newIndex * 100}%)`;
-      }
-    }
-    
-    if (currentIndex < offset) {
-      if (carouselRef.current) {
-        carouselRef.current.style.transition = 'none';
-        const newIndex = currentIndex + offset;
-        setCurrentIndex(newIndex);
-        carouselRef.current.style.transform = `translateX(-${newIndex * 100}%)`;
-      }
-    }
-    
-    setTimeout(() => {
-      if (carouselRef.current) {
-        carouselRef.current.style.transition = 'transform 500ms ease-out';
-      }
-    }, 50);
-  };
+  const filteredCards =
+    activeCategory === "all"
+      ? cardsData
+      : cardsData.filter((card) => {
+          const cat = categories.find((c) => c.id === activeCategory);
+          return cat?.ids?.includes(card.id);
+        });
 
-  const moveToSlide = (index: number) => {
-    if (carouselRef.current) {
-      carouselRef.current.style.transition = 'transform 500ms ease-out';
-      setCurrentIndex(index);
-      carouselRef.current.style.transform = `translateX(-${index * 100}%)`;
-    }
-  };
-
-  const handleDotClick = (index: number) => {
-    moveToSlide(index + offset);
-  };
-
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
-  const visualIndex = ((currentIndex % cardsData.length) + cardsData.length) % cardsData.length;
   return (
-    <div>
-      <div className="flex lg:hidden justify-center my-4">
-        {cardsData.map((_, index) => (
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+        {categories.map((cat) => (
           <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 mx-1 rounded-full transition-colors ${
-              visualIndex === index ? "bg-[#EF5613]" : "bg-white"
+            key={cat.id}
+            onClick={() => setActiveCategory(cat.id)}
+            className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+              activeCategory === cat.id
+                ? "bg-[#EF5613] text-white shadow-[0_0_20px_rgba(239,86,19,0.4)]"
+                : "bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/5"
             }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
+          >
+            {cat.label}
+          </button>
         ))}
       </div>
-      <div className="lg:hidden">
-        <div 
-          className="relative overflow-hidden rounded-lg shadow-lg"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div
-            ref={carouselRef}
-            className="flex w-full"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            onTransitionEnd={handleTransitionEnd}
-          >
-            {extendedCards.map((card, index) => (
-              <div
-                key={`${card.id}-${index}`}
-                className="flex-shrink-0 w-full flex justify-center px-4"
-              >
-                <div className="w-full xs:w-[372px] max-w-sm bg-[#363A3D] border-[4px] border-[#EF5613] rounded-[14px] flex flex-col items-center py-5 px-[33px]">
-                  <div className="flex w-full flex-col">
-                    <h2 className="font-semibold text-[28px] leading-[31px] mt-[15px]">
-                      {card.title} <br /> {card.sub_title}
-                    </h2>
-                    <div className="border-t-4 w-[79px] border-white mt-[11px]"></div>
 
-                    <p className="font-semibold text-[12px] text-[#878C8F] leading-[19px] w-[90%] mt-[22px]">
-                      {card.content}
-                    </p>
-                    <div
-                      className="flex gap-2 cursor-pointer items-center mt-[40px] lg:mt-[100px] py-5 w-[80%] self-center justify-center bg-[#EF5613]"
-                      onClick={() => openModal("intouch")}
-                    >
-                      <p className="font-semibold text-[12px] leading-[19px]">
-                        Get in touch
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="hidden lg:flex flex-wrap gap-10 justify-center">
-        {cardsData.map((card) => (
+      {/* Services Grid */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredCards.map((card) => (
           <div
             key={card.id}
-            className="w-full xs:w-[372px] max-w-sm bg-[#363A3D] border-[4px] border-[#EF5613] rounded-[14px] flex flex-col items-center py-5 px-[33px]"
+            onClick={() => openModal("intouch")}
+            className="group relative rounded-2xl bg-gradient-to-b from-[#11202B]/90 to-[#0A1621]/90 p-7 border border-white/10 hover:border-[#EF5613]/50 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(239,86,19,0.15)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div className="flex w-full flex-col">
-              <h2 className="font-semibold text-[28px] leading-[31px] mt-[15px]">
-                {card.title} <br /> {card.sub_title}
-              </h2>
-              <div className="border-t-4 w-[79px] border-white mt-[11px]"></div>
+            <div>
+              <div className="flex items-center justify-between mb-5">
+                <div className="w-12 h-12 rounded-xl bg-[#08141C] border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#EF5613]/40 transition-all duration-300">
+                  {serviceIcons[card.id] || <FiCode className="w-6 h-6 text-[#EF5613]" />}
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-[#EF5613] group-hover:text-white transition-colors">
+                  <FiArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </div>
 
-              <p className="font-semibold text-[12px] text-[#878C8F] leading-[19px] w-[90%] mt-[22px]">
+              <h4 className="font-bold text-lg md:text-xl text-white group-hover:text-[#EF5613] transition-colors">
+                {card.title} {card.sub_title}
+              </h4>
+
+              <p className="text-sm text-gray-300 mt-3 leading-relaxed">
                 {card.content}
               </p>
-              <div
-                className="flex gap-2 cursor-pointer items-center mt-[100px] py-5 w-[80%] self-center justify-center bg-[#EF5613]"
-                onClick={() => openModal("intouch")}
-              >
-                <button type="button" className="font-semibold text-[12px] leading-[19px]">
-                  Get in touch
-                </button>
-              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-400 font-medium">
+              <span className="text-gray-400 group-hover:text-white transition-colors">Enterprise Ready</span>
+              <span className="text-[#EF5613] font-semibold group-hover:underline">Discuss Scope &rarr;</span>
             </div>
           </div>
         ))}
