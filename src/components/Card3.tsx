@@ -66,7 +66,7 @@ const Card3: React.FC = () => {
       </div>
 
       {/* Main Flagship Container */}
-      <div className="w-full rounded-3xl bg-[#101F2B] border border-white/10 p-5 sm:p-8 lg:p-10 shadow-2xl flex flex-col gap-10">
+      <div className="w-full rounded-3xl bg-[#101F2B] border border-white/10 p-5 sm:p-8 lg:p-10 shadow-2xl flex flex-col gap-10 mb-20 lg:mb-28 overflow-visible">
         {/* Top Product Specs & Architecture Brief */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-8 border-b border-white/10">
           <div className="max-w-3xl">
@@ -141,7 +141,7 @@ const Card3: React.FC = () => {
         </div>
 
         {/* Real Device Showcase Canvas */}
-        <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-4 sm:p-8 overflow-hidden min-h-[580px] flex items-center justify-center">
+        <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-4 sm:p-8 pt-14 sm:pt-14 overflow-visible min-h-[540px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
           {/* Floating Breakout Badges */}
           <div className="absolute top-4 left-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-[#EF5613] text-white text-[11px] font-bold shadow-xl">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -648,21 +648,21 @@ const Card3: React.FC = () => {
             </motion.div>
           )}
 
-          {/* REAL IPHONE MOBILE APP VIEW */}
+          {/* REAL 3D IPHONE MOBILE APP VIEW */}
           {(deviceMode === "dual" || deviceMode === "phone") && hasMobile && (
             <motion.div
               key={`phone-${selectedAppId}`}
-              initial={{ opacity: 0, x: 24, rotate: -4 }}
-              animate={{ opacity: 1, x: 0, rotate: deviceMode === "dual" ? -2 : 0 }}
-              whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -12, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 240, damping: 20 }}
               className={`${
                 deviceMode === "dual"
-                  ? "hidden lg:block absolute -right-2 xl:right-6 top-1/2 -translate-y-1/2 z-20 shadow-[0_30px_70px_rgba(0,0,0,0.9)]"
+                  ? "relative lg:absolute lg:-right-8 lg:-bottom-24 z-30 mt-4 lg:mt-0"
                   : "w-full max-w-xs"
               }`}
             >
-              <PhoneFrame appName={currentApp.name}>
+              <PhoneFrame is3D={true}>
                 {/* 1. FUNDY PAY PHONE APP */}
                 {selectedAppId === "fundypay" && (
                   <div className="flex flex-col justify-between h-full space-y-3">
