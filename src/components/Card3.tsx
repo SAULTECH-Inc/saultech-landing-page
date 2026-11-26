@@ -662,7 +662,7 @@ const Card3: React.FC = () => {
                   : "w-full max-w-xs"
               }`}
             >
-              <PhoneFrame is3D={true}>
+              <PhoneFrame>
                 {/* 1. FUNDY PAY PHONE APP */}
                 {selectedAppId === "fundypay" && (
                   <div className="flex flex-col justify-between h-full space-y-3">

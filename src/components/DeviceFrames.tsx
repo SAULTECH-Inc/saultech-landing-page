@@ -4,13 +4,11 @@ import { FiWifi, FiBattery } from "react-icons/fi";
 interface PhoneFrameProps {
   children: React.ReactNode;
   className?: string;
-  is3D?: boolean;
 }
 
 export const PhoneFrame: React.FC<PhoneFrameProps> = ({
   children,
   className = "",
-  is3D = true,
 }) => {
   return (
     <div
@@ -18,27 +16,9 @@ export const PhoneFrame: React.FC<PhoneFrameProps> = ({
       style={{
         width: "285px",
         height: "570px",
-        perspective: "1400px",
       }}
     >
-      <div
-        className={`relative w-full h-full rounded-[46px] border-[6px] border-[#33414F] bg-[#000] p-1.5 transition-all duration-500 ${
-          is3D
-            ? "shadow-[12px_14px_0px_#1E2933,14px_16px_0px_#0F171E,28px_36px_70px_rgba(0,0,0,0.95)]"
-            : "shadow-[0_25px_60px_rgba(0,0,0,0.85)]"
-        }`}
-        style={
-          is3D
-            ? {
-                transform: "rotateY(-16deg) rotateX(6deg) rotateZ(-2deg)",
-                transformStyle: "preserve-3d",
-              }
-            : undefined
-        }
-      >
-        {/* 3D Titanium Side Highlight Rim */}
-        <div className="pointer-events-none absolute -inset-[6px] rounded-[46px] border border-white/20" />
-
+      <div className="relative w-full h-full rounded-[46px] border-[6px] border-[#2B3844] bg-[#000] p-1.5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] transition-all duration-300">
         {/* Side Hardware Buttons */}
         <div className="absolute -left-[9px] top-24 h-7 w-[3px] rounded-l-md bg-[#475869]" />
         <div className="absolute -left-[9px] top-36 h-11 w-[3px] rounded-l-md bg-[#475869]" />
@@ -47,14 +27,6 @@ export const PhoneFrame: React.FC<PhoneFrameProps> = ({
 
         {/* Screen Enclosure */}
         <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-[#07131B] text-white flex flex-col justify-between border border-white/10">
-          {/* Subtle Diagonal Glass Reflection Sheen */}
-          <div
-            className="pointer-events-none absolute inset-0 z-40 opacity-10"
-            style={{
-              clipPath: "polygon(0 0, 65% 0, 20% 100%, 0 100%)",
-              backgroundColor: "#FFFFFF",
-            }}
-          />
 
           {/* Dynamic Island & Status Bar */}
           <div className="relative z-30 flex items-center justify-between px-6 pt-3 pb-1 text-[11px] font-semibold text-white">
