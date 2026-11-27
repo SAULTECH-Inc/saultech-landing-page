@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useModalStore } from "./useModalStore";
+import { submitLeadInquiry } from "../lib/supabase";
 import { IoCloseOutline } from "react-icons/io5";
 import { FiCheck, FiSend, FiCompass, FiPenTool, FiCode, FiShield } from "react-icons/fi";
 import {
@@ -22,6 +23,8 @@ const Modal: React.FC = () => {
     phone: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   // Live chat messages state
@@ -36,8 +39,23 @@ const Modal: React.FC = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    setSubmitError(null);
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const res = await submitLeadInquiry({
+      name: fullName,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      source: "contact_modal",
+    });
+    setSubmitting(false);
+    if (!res.ok) {
+      setSubmitError(res.error || "Unable to send message. Please try WhatsApp or email.");
+      return;
+    }
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -57,7 +75,7 @@ const Modal: React.FC = () => {
         ...prev,
         {
           sender: "bot",
-          text: "Thank you for reaching out! A senior tech lead has been notified and will reply shortly. You can also reach us directly via WhatsApp (+234 701 107 9676) for instant consultation.",
+          text: "Thank you for reaching out! A senior tech lead has been notified and will reply shortly. You can also reach us directly via WhatsApp (+234 706 765 9632) for instant consultation.",
         },
       ]);
     }, 800);
@@ -250,7 +268,7 @@ const Modal: React.FC = () => {
               </button>
 
               <a
-                href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
+                href="https://wa.me/2347067659632?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/50 transition-all cursor-pointer text-left group"
@@ -263,7 +281,7 @@ const Modal: React.FC = () => {
                     <h4 className="font-semibold text-white group-hover:text-green-400 transition-colors">
                       WhatsApp Quick Chat
                     </h4>
-                    <p className="text-xs text-gray-400">+234 701 107 9676 (Instant reply)</p>
+                    <p className="text-xs text-gray-400">+234 706 765 9632 (Instant reply)</p>
                   </div>
                 </div>
                 <img src={ArrowRight} alt="Arrow" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -288,7 +306,7 @@ const Modal: React.FC = () => {
               </button>
 
               <a
-                href="mailto:saultech@gmail.com?subject=Project%20Inquiry%20-%20SaulTech"
+                href="mailto:support@saultechitsolutions.com?subject=Project%20Inquiry%20-%20SaulTech"
                 className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#EF5613]/50 transition-all cursor-pointer text-left group"
               >
                 <div className="flex items-center gap-4">
@@ -299,7 +317,7 @@ const Modal: React.FC = () => {
                     <h4 className="font-semibold text-white group-hover:text-[#EF5613] transition-colors">
                       Email Engineering Team
                     </h4>
-                    <p className="text-xs text-gray-400">saultech@gmail.com</p>
+                    <p className="text-xs text-gray-400">support@saultechitsolutions.com</p>
                   </div>
                 </div>
                 <img src={ArrowRight} alt="Arrow" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -390,12 +408,19 @@ const Modal: React.FC = () => {
                   />
                 </div>
 
+                {submitError && (
+                  <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-3 py-2">
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer flex items-center justify-center gap-2"
+                  disabled={submitting}
+                  className="w-full py-3.5 rounded-full bg-[#EF5613] hover:bg-[#d94a0d] text-white font-semibold text-sm hover:shadow-[0_0_24px_rgba(239,86,19,0.35)] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
                 >
                   <FiSend className="w-4 h-4" />
-                  <span>Send Project Request</span>
+                  <span>{submitting ? "Sending Request..." : "Send Project Request"}</span>
                 </button>
 
                 <p className="text-[11px] text-gray-400 text-center">

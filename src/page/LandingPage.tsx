@@ -9,6 +9,7 @@ import CommandDock from "../components/CommandDock";
 import ProcessIllustration from "../components/ProcessIllustration";
 import Modal from "../components/Modal";
 import { useModalStore } from "../components/useModalStore";
+import { submitLeadInquiry } from "../lib/supabase";
 import {
   card2Data,
   cardsData,
@@ -34,14 +35,29 @@ const LandingPage: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [leadForm, setLeadForm] = useState({ name: "", email: "", message: "" });
+  const [leadSubmitting, setLeadSubmitting] = useState(false);
+  const [leadError, setLeadError] = useState<string | null>(null);
   const [leadSubmitted, setLeadSubmitted] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!leadForm.name.trim() || !leadForm.email.trim()) return;
+    setLeadSubmitting(true);
+    setLeadError(null);
+    const res = await submitLeadInquiry({
+      name: leadForm.name,
+      email: leadForm.email,
+      message: leadForm.message,
+      source: "landing_cta",
+    });
+    setLeadSubmitting(false);
+    if (!res.ok) {
+      setLeadError(res.error || "Unable to submit right now. Please try WhatsApp or email.");
+      return;
+    }
     setLeadSubmitted(true);
   };
 
@@ -490,7 +506,7 @@ const LandingPage: React.FC = () => {
             {/* Alternative Contact Options */}
             <div className="flex flex-wrap items-center gap-3 pt-3 w-full">
               <a
-                href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
+                href="https://wa.me/2347067659632?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#08141C] hover:bg-white/10 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all"
@@ -499,11 +515,11 @@ const LandingPage: React.FC = () => {
                 <span>WhatsApp Direct</span>
               </a>
               <a
-                href="mailto:saultech@gmail.com?subject=Project%20Inquiry"
+                href="mailto:support@saultechitsolutions.com?subject=Project%20Inquiry"
                 className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#08141C] hover:bg-white/10 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all"
               >
                 <FiMail className="w-4 h-4 text-[#EF5613]" />
-                <span>saultech@gmail.com</span>
+                <span>support@saultechitsolutions.com</span>
               </a>
             </div>
           </div>
@@ -573,8 +589,16 @@ const LandingPage: React.FC = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full py-3.5 text-sm font-bold mt-1">
-                  Get a Project Estimate <FiArrowRight className="inline w-4 h-4 ml-1" />
+                {leadError && (
+                  <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-3 py-2">
+                    {leadError}
+                  </p>
+                )}
+
+                <Button type="submit" disabled={leadSubmitting} className="w-full py-3.5 text-sm font-bold mt-1 disabled:opacity-60">
+                  {leadSubmitting ? "Sending..." : (
+                    <>Get a Project Estimate <FiArrowRight className="inline w-4 h-4 ml-1" /></>
+                  )}
                 </Button>
               </form>
             )}
@@ -657,18 +681,23 @@ const LandingPage: React.FC = () => {
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex items-start gap-2.5">
                   <FiMapPin className="w-4 h-4 text-[#EF5613] mt-1 shrink-0" />
-                  <span>Adamawa, Waziri Way 122, Nigeria</span>
+                  <span>Abuja, Nigeria (Office opening soon)</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <FiPhone className="w-4 h-4 text-[#EF5613] shrink-0" />
-                  <a href="tel:+2347011079676" className="hover:text-white transition-colors">
-                    +234 701 107 9676
-                  </a>
+                <li className="flex items-start gap-2.5">
+                  <FiPhone className="w-4 h-4 text-[#EF5613] mt-1 shrink-0" />
+                  <div className="flex flex-col gap-1">
+                    <a href="tel:+2347067659632" className="hover:text-white transition-colors">
+                      +234 706 765 9632
+                    </a>
+                    <a href="tel:+23480883056" className="hover:text-white transition-colors">
+                      +234 808 830 56
+                    </a>
+                  </div>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <FiMail className="w-4 h-4 text-[#EF5613] shrink-0" />
-                  <a href="mailto:saultech@gmail.com" className="hover:text-white transition-colors">
-                    saultech@gmail.com
+                  <a href="mailto:support@saultechitsolutions.com" className="hover:text-white transition-colors break-all">
+                    support@saultechitsolutions.com
                   </a>
                 </li>
                 <li className="pt-2">
