@@ -4,26 +4,26 @@ export const cardsData = [
   {
     id: 1,
     image: Imac,
-    title: "Bespoke Software",
+    title: "Build & Modernize Software",
     content:
-      "Have a product vision, but no engineering team to ship it? We take you from blueprint to production-grade web and mobile apps—built to scale from day one.",
-    services: ["MVP in Weeks", "SaaS Platforms", "Mobile Apps", "Dedicated Team"],
+      "Launching from zero or stuck with an unstable existing codebase? We build new web & mobile products and rescue, refactor, or upgrade your current software.",
+    services: ["New Builds & MVPs", "Legacy Rescue", "Bug Fixes & Upgrades", "Dedicated Team"],
   },
   {
     id: 2,
     image: User_groups,
-    title: "Team Extension",
+    title: "QA Testing & Security Audits",
     content:
-      "Your roadmap is moving slower than your market. Embed our senior engineers directly into your workflow to ship features faster without the 6-month recruiting overhead.",
-    services: ["Embedded Engineers", "Rapid Scaling", "Zero Hiring Lag"],
+      "Shipping blind or worried about vulnerabilities in your existing systems? We run automated & manual QA testing, load testing, and penetration audits before issues hit users.",
+    services: ["Automated & Manual QA", "Penetration Testing", "Security Hardening"],
   },
   {
     id: 3,
     image: Workspace,
-    title: "DevOps & Cloud",
+    title: "Deploy, Cloud & 24/7 Management",
     content:
-      "Slow deployments and unpredictable cloud bills? We architect automated CI/CD pipelines and high-uptime infrastructure that cuts waste and scales effortlessly.",
-    services: ["Cloud Architecture", "System Migration", "99.99% Uptime SLA"],
+      "Struggling with downtime, slow releases, or rising cloud bills? We deploy, monitor, and manage your cloud infrastructure and live applications around the clock.",
+    services: ["Cloud Deployment", "CI/CD Pipelines", "24/7 Infra Management"],
   },
 ];
 

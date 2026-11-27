@@ -187,23 +187,23 @@ const LandingPage: React.FC = () => {
             <span>Available for New Projects &amp; Contracts</span>
           </div>
 
-          {/* Headline — outcome-led */}
+          {/* Headline — outcome-led, new + existing systems */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
-            We Build, Deploy, and Manage Custom Software{" "}
-            <span className="text-[#EF5613]">That Scales Your Business.</span>
+            We Build, Test, Secure &amp; Manage{" "}
+            <span className="text-[#EF5613]">Your Business Software.</span>
           </h1>
 
-          {/* Sub — who it's for + what we do */}
+          {/* Sub — new builds + existing systems */}
           <p className="text-base sm:text-lg text-gray-300 mt-6 leading-relaxed max-w-xl">
-            We partner with high-growth startups and established enterprises across fintech, healthcare, education, and commerce to engineer reliable web, mobile, and cloud systems from zero to scale.
+            Whether you&apos;re launching a new platform from scratch or need senior engineers to test, fix, deploy, secure, and manage your existing software and cloud infrastructure — SaulTech is your full-lifecycle engineering partner.
           </p>
 
           {/* Trust signals inline */}
-          <ul className="mt-5 flex flex-col sm:flex-row gap-3 text-sm text-gray-400">
+          <ul className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 text-sm text-gray-400">
             {[
-              "8 live products in production",
-              "500K+ end users served",
-              "24/7/365 support",
+              "New Builds & Legacy Rescue",
+              "QA Testing & Security Audits",
+              "24/7 Infrastructure Management",
             ].map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <FiCheckCircle className="w-4 h-4 text-[#EF5613] shrink-0" />
@@ -309,11 +309,11 @@ const LandingPage: React.FC = () => {
             Why SaulTech
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
-            Built for Businesses That Can't Afford to Wait
+            Whether You&apos;re Building New or Fixing Existing Systems
           </h2>
           <div className="w-16 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
           <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
-            Whether you're launching your first product or scaling an existing platform, we tailor our model to your exact stage and goals.
+            You don&apos;t have to start from scratch to work with us. We build new products, test and secure existing software, and manage your cloud infrastructure end-to-end.
           </p>
         </div>
 
@@ -337,7 +337,7 @@ const LandingPage: React.FC = () => {
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
           <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
-            End-to-end solutions spanning frontend, backend, native mobile, cloud infrastructure, and intelligent automation — no outsourcing, all in-house.
+            From greenfield builds to testing, securing, deploying, and managing your existing applications and cloud infrastructure — all in-house.
           </p>
         </div>
 
@@ -470,11 +470,11 @@ const LandingPage: React.FC = () => {
               Ready to Build?
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-              Get a Free Project Estimate or{" "}
-              <span className="text-[#EF5613]">Book a Consultation.</span>
+              Need Software Built, Tested,{" "}
+              <span className="text-[#EF5613]">Secured, or Managed?</span>
             </h2>
             <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-              Tell us what you are building or fixing. A senior technical architect—not a generic salesperson—will review your brief and respond within 24 hours.
+              Tell us what you&apos;re launching, fixing, testing, or scaling. A senior technical architect—not a generic salesperson—will review your brief and respond within 24 hours.
             </p>
 
             {/* Micro trust signals */}
@@ -568,7 +568,7 @@ const LandingPage: React.FC = () => {
                     rows={3}
                     value={leadForm.message}
                     onChange={(e) => setLeadForm({ ...leadForm, message: e.target.value })}
-                    placeholder="Tell us briefly about your project, timeline, or challenge..."
+                    placeholder="Tell us about your new build, existing system, QA testing, or infrastructure needs..."
                     className="w-full rounded-xl bg-[#101F2B] border border-white/10 focus:border-[#EF5613] focus:outline-none px-4 py-3 text-sm text-white placeholder-gray-500 transition-colors resize-none"
                   />
                 </div>
