@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Group_1, Whatsapp } from "../assets/svg";
-import SaulTechLogo from "../assets/saultech-logo-transparent.png";
+import SaulTechLogo from "../components/SaulTechLogo";
 import Button from "../common/Button";
 import Card1 from "../components/Card1";
 import Card2 from "../components/Card2";
@@ -96,10 +96,9 @@ const LandingPage: React.FC = () => {
             duration={500}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <img
-              src={SaulTechLogo}
-              alt="SaulTech Official Logo"
-              className="w-12 h-12 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_0_16px_rgba(239,86,19,0.6)] drop-shadow-[0_0_6px_rgba(255,255,255,0.15)]"
+            <SaulTechLogo
+              variant="midnight"
+              className="w-12 h-12 shrink-0 group-hover:scale-105 transition-transform drop-shadow-[0_0_14px_rgba(239,86,19,0.45)]"
             />
             <span className="font-extrabold text-2xl tracking-tight text-white group-hover:text-[#EF5613] transition-colors">
               SAUL<span className="text-[#EF5613]">TECH</span>
@@ -621,10 +620,9 @@ const LandingPage: React.FC = () => {
             {/* Col 1: Brand */}
             <div className="lg:col-span-1 flex flex-col">
               <div className="flex items-center gap-2.5 mb-4">
-                <img
-                  src={SaulTechLogo}
-                  alt="SaulTech Official Logo"
-                  className="w-11 h-11 object-contain drop-shadow-[0_0_14px_rgba(239,86,19,0.55)]"
+                <SaulTechLogo
+                  variant="midnight"
+                  className="w-11 h-11 shrink-0 drop-shadow-[0_0_12px_rgba(239,86,19,0.4)]"
                 />
                 <span className="font-extrabold text-2xl tracking-tight text-white">
                   SAUL<span className="text-[#EF5613]">TECH</span>
