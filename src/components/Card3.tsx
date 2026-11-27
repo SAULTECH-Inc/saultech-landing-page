@@ -206,71 +206,77 @@ const Card3: React.FC = () => {
               <LaptopFrame url={`https://${currentApp.id}.app.saultech.internal`}>
                 {/* 1. FUNDY PAY WEB DASHBOARD */}
                 {selectedAppId === "fundypay" && (
-                  <div className="p-4 sm:p-6 space-y-4">
+                  <div className="p-3 sm:p-6 space-y-4">
                     {/* Top Bar */}
-                    <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center font-black text-white text-sm">
+                    <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-white/10 pb-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center font-black text-white text-sm">
                           FP
                         </div>
-                        <div>
-                          <p className="text-xs font-bold text-white">Fundy Pay Institutional Treasury</p>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-white truncate">Fundy Pay Institutional Treasury</p>
                           <p className="text-[10px] text-gray-400">Account #8849-2041-USD</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5 flex-wrap">
                         <span className="text-[10px] text-green-400 font-mono">● LIVE SETTLEMENT (18ms)</span>
-                        <button className="px-3 py-1 rounded bg-[#EF5613] text-white text-[10px] font-bold">
+                        <button className="px-3 py-1 rounded bg-[#EF5613] text-white text-[10px] font-bold shrink-0">
                           + New Transfer
                         </button>
                       </div>
                     </div>
 
                     {/* Financial Metrics */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
-                      <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
-                        <span className="text-[10px] text-gray-400">USD Vault Balance</span>
-                        <p className="text-base font-black text-white mt-1">$1,482,910.40</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-xs">
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-[#101F2B] border border-white/5 min-w-0">
+                        <span className="text-[10px] text-gray-400 block truncate">USD Vault Balance</span>
+                        <p className="text-xs sm:text-base font-black text-white mt-1 truncate">$1,482,910.40</p>
                         <span className="text-[9px] text-green-400">+14.2% Yield APY</span>
                       </div>
-                      <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
-                        <span className="text-[10px] text-gray-400">EUR Reserve</span>
-                        <p className="text-base font-black text-white mt-1">€840,200.00</p>
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-[#101F2B] border border-white/5 min-w-0">
+                        <span className="text-[10px] text-gray-400 block truncate">EUR Reserve</span>
+                        <p className="text-xs sm:text-base font-black text-white mt-1 truncate">€840,200.00</p>
                         <span className="text-[9px] text-gray-400">Hedged Fixed</span>
                       </div>
-                      <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
-                        <span className="text-[10px] text-gray-400">Active Virtual Cards</span>
-                        <p className="text-base font-black text-[#EF5613] mt-1">1,248 Cards</p>
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-[#101F2B] border border-white/5 min-w-0">
+                        <span className="text-[10px] text-gray-400 block truncate">Active Virtual Cards</span>
+                        <p className="text-xs sm:text-base font-black text-[#EF5613] mt-1 truncate">1,248 Cards</p>
                         <span className="text-[9px] text-green-400">PCI-DSS Level 1</span>
                       </div>
-                      <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
-                        <span className="text-[10px] text-gray-400">P2P Speed</span>
-                        <p className="text-base font-black text-white mt-1">18ms Instant</p>
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-[#101F2B] border border-white/5 min-w-0">
+                        <span className="text-[10px] text-gray-400 block truncate">P2P Speed</span>
+                        <p className="text-xs sm:text-base font-black text-white mt-1 truncate">18ms Instant</p>
                         <span className="text-[9px] text-green-400">Zero Network Slip</span>
                       </div>
                     </div>
 
                     {/* Real Transaction Table */}
                     <div className="rounded-xl bg-[#101F2B] border border-white/5 overflow-hidden text-xs">
-                      <div className="px-3 py-2 bg-[#0C1A24] font-bold text-[11px] text-gray-300 flex justify-between">
+                      <div className="px-3 py-2 bg-[#0C1A24] font-bold text-[10px] sm:text-[11px] text-gray-300 flex items-center justify-between gap-2">
                         <span>Real-Time P2P Ledger</span>
-                        <span className="text-gray-400">Showing last 4 transactions</span>
+                        <span className="text-gray-400 text-[10px] shrink-0">Last 3 txns</span>
                       </div>
                       <div className="divide-y divide-white/5">
-                        <div className="px-3 py-2 flex items-center justify-between text-[11px]">
-                          <span className="text-white font-semibold">Automated Payroll Batch #441</span>
-                          <span className="font-mono text-white">$45,210.00</span>
-                          <span className="text-green-400 font-bold text-[10px]">VERIFIED</span>
+                        <div className="px-3 py-2 flex items-center justify-between gap-2 text-[10px] sm:text-[11px]">
+                          <span className="text-white font-semibold truncate">Automated Payroll Batch #441</span>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="font-mono text-white">$45,210.00</span>
+                            <span className="text-green-400 font-bold text-[9px] sm:text-[10px]">VERIFIED</span>
+                          </div>
                         </div>
-                        <div className="px-3 py-2 flex items-center justify-between text-[11px]">
-                          <span className="text-white font-semibold">P2P Cross-Border Wire: US -&gt; NG</span>
-                          <span className="font-mono text-white">$8,400.00</span>
-                          <span className="text-green-400 font-bold text-[10px]">SETTLED</span>
+                        <div className="px-3 py-2 flex items-center justify-between gap-2 text-[10px] sm:text-[11px]">
+                          <span className="text-white font-semibold truncate">P2P Wire: US -&gt; NG</span>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="font-mono text-white">$8,400.00</span>
+                            <span className="text-green-400 font-bold text-[9px] sm:text-[10px]">SETTLED</span>
+                          </div>
                         </div>
-                        <div className="px-3 py-2 flex items-center justify-between text-[11px]">
-                          <span className="text-white font-semibold">Virtual Card Spend: AWS Cloud Infrastructure</span>
-                          <span className="font-mono text-white">$3,210.45</span>
-                          <span className="text-green-400 font-bold text-[10px]">CLEARED</span>
+                        <div className="px-3 py-2 flex items-center justify-between gap-2 text-[10px] sm:text-[11px]">
+                          <span className="text-white font-semibold truncate">Virtual Card: AWS Cloud</span>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="font-mono text-white">$3,210.45</span>
+                            <span className="text-green-400 font-bold text-[9px] sm:text-[10px]">CLEARED</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -280,9 +286,9 @@ const Card3: React.FC = () => {
                 {/* 2. MUNE WORK WEB DASHBOARD */}
                 {selectedAppId === "munework" && (
                   <div className="p-4 sm:p-6 space-y-4">
-                    <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                    <div className="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center font-bold text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center font-bold text-white text-sm">
                           MW
                         </div>
                         <div>
@@ -350,7 +356,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiMusic className="w-4 h-4" />
                         </div>
                         <div>
@@ -402,7 +408,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiBookOpen className="w-4 h-4" />
                         </div>
                         <div>
@@ -448,7 +454,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiTrello className="w-4 h-4" />
                         </div>
                         <div>
@@ -510,7 +516,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiFileText className="w-4 h-4" />
                         </div>
                         <div>
@@ -566,7 +572,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiShield className="w-4 h-4" />
                         </div>
                         <div>
@@ -627,7 +633,7 @@ const Card3: React.FC = () => {
                   <div className="p-4 sm:p-6 space-y-4">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-[#EF5613] flex items-center justify-center text-white text-sm">
                           <FiActivity className="w-4 h-4" />
                         </div>
                         <div>
