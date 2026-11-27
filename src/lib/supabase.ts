@@ -17,11 +17,12 @@ export interface LeadInquiryPayload {
 }
 
 /**
- * Persists a visitor inquiry to the Supabase `inquiries` table.
+ * Persists a visitor inquiry to the Supabase `inquiries` table
+ * and triggers confirmation + notification emails via `/api/contact` (Resend).
  */
 export async function submitLeadInquiry(
   payload: LeadInquiryPayload
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; error?: string; emailSent?: boolean }> {
   if (!supabase) {
     return {
       ok: false,
@@ -30,13 +31,18 @@ export async function submitLeadInquiry(
     };
   }
 
+  const trimmedPayload = {
+    name: payload.name.trim(),
+    email: payload.email.trim(),
+    phone: payload.phone?.trim() || null,
+    message: payload.message.trim(),
+    source: payload.source,
+  };
+
   const { error } = await supabase.from("inquiries").insert([
     {
-      name: payload.name.trim(),
-      email: payload.email.trim(),
-      phone: payload.phone?.trim() || null,
-      message: payload.message.trim() || null,
-      source: payload.source,
+      ...trimmedPayload,
+      message: trimmedPayload.message || null,
     },
   ]);
 
@@ -44,5 +50,21 @@ export async function submitLeadInquiry(
     return { ok: false, error: error.message };
   }
 
-  return { ok: true };
+  // Trigger Resend confirmation + team notification email (non-blocking if email service isn't configured yet)
+  let emailSent = false;
+  try {
+    const emailRes = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(trimmedPayload),
+    });
+    if (emailRes.ok) {
+      const data = (await emailRes.json().catch(() => ({}))) as { ok?: boolean };
+      emailSent = Boolean(data.ok);
+    }
+  } catch {
+    // Keep Supabase lead capture successful even if email dispatch fails
+  }
+
+  return { ok: true, emailSent };
 }
