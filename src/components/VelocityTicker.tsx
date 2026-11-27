@@ -92,11 +92,44 @@ function AnimatedCounter({
   );
 }
 
+const clientLogos = [
+  { name: "FUNDY PAY", tag: "Fintech" },
+  { name: "MUNE WORK", tag: "AI Hiring" },
+  { name: "HESTANE", tag: "Hospital OS" },
+  { name: "KRIDENCE", tag: "EdTech SaaS" },
+  { name: "WORKSYNC", tag: "Enterprise" },
+  { name: "MUSESPOT", tag: "Streaming" },
+  { name: "AFFIX AI", tag: "LegalTech" },
+  { name: "SYSTEM TIGHT", tag: "Security" },
+];
+
 const VelocityTicker: React.FC = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <section className="w-full bg-[#08141C] border-y border-white/8 py-12 sm:py-16 overflow-hidden">
+      {/* Client / Ecosystem Logos Strip */}
+      <div className="w-[92%] max-w-7xl mx-auto mb-12 pb-10 border-b border-white/8">
+        <p className="text-center text-[11px] font-bold uppercase tracking-[0.28em] text-gray-500 mb-6">
+          Trusted by Founders &amp; Teams Behind
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          {clientLogos.map((logo) => (
+            <div
+              key={logo.name}
+              className="flex flex-col items-center justify-center py-3 px-2 rounded-xl bg-[#0D1A24] border border-white/5 hover:border-[#EF5613]/40 transition-colors group"
+            >
+              <span className="text-xs font-black tracking-wider text-gray-300 group-hover:text-white transition-colors">
+                {logo.name}
+              </span>
+              <span className="text-[9px] font-semibold uppercase tracking-widest text-gray-600 group-hover:text-[#EF5613] transition-colors mt-0.5">
+                {logo.tag}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Section Label */}
       <div className="flex items-center justify-center gap-4 mb-10">
         <div className="h-px flex-1 max-w-[80px] bg-[#EF5613]/40" />

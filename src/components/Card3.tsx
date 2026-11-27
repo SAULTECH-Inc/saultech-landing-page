@@ -140,6 +140,34 @@ const Card3: React.FC = () => {
           </div>
         </div>
 
+        {/* Business Impact Strip: Challenge / Solution / Result */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-2xl bg-[#08141C] border border-white/10 p-4">
+            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+              01. The Challenge
+            </span>
+            <p className="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
+              {currentApp.challenge}
+            </p>
+          </div>
+          <div className="rounded-2xl bg-[#08141C] border border-white/10 p-4">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#EF5613]">
+              02. The Solution
+            </span>
+            <p className="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
+              {currentApp.solution}
+            </p>
+          </div>
+          <div className="rounded-2xl bg-[#08141C] border border-green-500/30 p-4">
+            <span className="text-[10px] font-black uppercase tracking-widest text-green-400">
+              03. The Result
+            </span>
+            <p className="text-xs sm:text-sm text-white font-semibold mt-1.5 leading-relaxed">
+              {currentApp.result}
+            </p>
+          </div>
+        </div>
+
         {/* Real Device Showcase Canvas */}
         <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-4 sm:p-8 pt-14 sm:pt-14 overflow-visible min-h-[540px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
           {/* Floating Breakout Badges */}

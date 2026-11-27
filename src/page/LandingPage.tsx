@@ -33,9 +33,17 @@ const LandingPage: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
   const { scrollYProgress } = useScroll();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [leadForm, setLeadForm] = useState({ name: "", email: "", message: "" });
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const handleLeadSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!leadForm.name.trim() || !leadForm.email.trim()) return;
+    setLeadSubmitted(true);
+  };
 
   return (
     <div className="w-full bg-[#08141C] text-[#FFFFFF] min-h-screen flex flex-col items-center selection:bg-[#EF5613] selection:text-white relative overflow-x-hidden">
@@ -181,13 +189,13 @@ const LandingPage: React.FC = () => {
 
           {/* Headline — outcome-led */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
-            We Build the Software{" "}
-            <span className="text-[#EF5613]">Behind Ambitious Businesses.</span>
+            We Build, Deploy, and Manage Custom Software{" "}
+            <span className="text-[#EF5613]">That Scales Your Business.</span>
           </h1>
 
           {/* Sub — who it's for + what we do */}
           <p className="text-base sm:text-lg text-gray-300 mt-6 leading-relaxed max-w-xl">
-            SaulTech is a full-service software consultancy. From idea to production — we design, engineer, and launch scalable digital products for startups and enterprises across Africa and beyond.
+            We partner with high-growth startups and established enterprises across fintech, healthcare, education, and commerce to engineer reliable web, mobile, and cloud systems from zero to scale.
           </p>
 
           {/* Trust signals inline */}
@@ -210,7 +218,7 @@ const LandingPage: React.FC = () => {
               onClick={() => openModal("intouch")}
               className="w-full sm:w-auto px-8 py-3.5 text-base"
             >
-              Start a Project →
+              Book a Free Consultation →
             </Button>
             <Link
               to="portfolio"
@@ -220,7 +228,7 @@ const LandingPage: React.FC = () => {
               duration={500}
               className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all text-sm font-semibold cursor-pointer"
             >
-              See Our Work
+              See Case Studies
             </Link>
           </div>
 
@@ -451,48 +459,125 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* ══════════════════════════════════════════
-          8. FINAL CTA — What to do next
-          One clear action. No distractions.
+          8. FINAL CTA & LOW-FRICTION LEAD CAPTURE
+          Short 3-field form + alternative contact
       ══════════════════════════════════════════ */}
-      <section className="w-full bg-[#101F2B] border-t border-b border-[#EF5613]/30 py-20 md:py-28">
-        <div className="w-[92%] max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#EF5613]">
-            Ready to Build?
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-            Let's Turn Your Idea Into a{" "}
-            <span className="text-[#EF5613]">Production-Grade Product.</span>
-          </h2>
-          <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-xl">
-            Whether you need an MVP in 6 weeks, a team to scale your platform, or a full product partner — we're ready. No fluff, no delays.
-          </p>
+      <section className="w-full bg-[#101F2B] border-t border-b border-[#EF5613]/30 py-20 md:py-24">
+        <div className="w-[92%] max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left: Pitch + Direct Contact Alternatives */}
+          <div className="lg:col-span-6 flex flex-col items-start text-left gap-5">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#EF5613]">
+              Ready to Build?
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+              Get a Free Project Estimate or{" "}
+              <span className="text-[#EF5613]">Book a Consultation.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+              Tell us what you are building or fixing. A senior technical architect—not a generic salesperson—will review your brief and respond within 24 hours.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-            <Button
-              onClick={() => openModal("contactform")}
-              className="w-full sm:w-auto px-10 py-4 text-base font-bold shadow-[0_0_30px_rgba(239,86,19,0.4)]"
-            >
-              Start a Project <FiArrowRight className="inline w-4 h-4 ml-1" />
-            </Button>
-            <a
-              href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/8 hover:bg-white/14 border border-white/20 text-white font-semibold text-sm transition-all"
-            >
-              <img src={Whatsapp} alt="WhatsApp" className="w-5 h-5" />
-              <span>Message on WhatsApp</span>
-            </a>
+            {/* Micro trust signals */}
+            <div className="flex flex-wrap gap-5 text-xs text-gray-400 pt-1">
+              {["Free initial consultation", "Response within 24h", "NDA available on request"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5">
+                  <FiCheckCircle className="w-3.5 h-3.5 text-[#EF5613]" />
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Alternative Contact Options */}
+            <div className="flex flex-wrap items-center gap-3 pt-3 w-full">
+              <a
+                href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#08141C] hover:bg-white/10 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all"
+              >
+                <img src={Whatsapp} alt="WhatsApp" className="w-4 h-4" />
+                <span>WhatsApp Direct</span>
+              </a>
+              <a
+                href="mailto:saultech@gmail.com?subject=Project%20Inquiry"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#08141C] hover:bg-white/10 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all"
+              >
+                <FiMail className="w-4 h-4 text-[#EF5613]" />
+                <span>saultech@gmail.com</span>
+              </a>
+            </div>
           </div>
 
-          {/* Micro trust signals below CTAs */}
-          <div className="flex flex-wrap justify-center gap-6 mt-6 text-xs text-gray-500">
-            {["Free initial consultation", "Response within 24h", "NDA available on request"].map((t) => (
-              <span key={t} className="flex items-center gap-1.5">
-                <FiCheckCircle className="w-3.5 h-3.5 text-[#EF5613]" />
-                {t}
-              </span>
-            ))}
+          {/* Right: Low-Friction 3-Field Form */}
+          <div className="lg:col-span-6 rounded-3xl bg-[#08141C] border border-white/10 p-6 sm:p-8 shadow-2xl">
+            {leadSubmitted ? (
+              <div className="py-10 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-green-500/15 border border-green-500/40 flex items-center justify-center">
+                  <FiCheckCircle className="w-6 h-6 text-green-400" />
+                </div>
+                <h3 className="text-xl font-black text-white">Request Received</h3>
+                <p className="text-sm text-gray-400 max-w-sm">
+                  Thanks, <span className="text-white font-semibold">{leadForm.name}</span>. We&apos;ll reach out to{" "}
+                  <span className="text-[#EF5613]">{leadForm.email}</span> within 24 hours.
+                </p>
+                <button
+                  onClick={() => {
+                    setLeadSubmitted(false);
+                    setLeadForm({ name: "", email: "", message: "" });
+                  }}
+                  className="text-xs font-bold text-gray-400 hover:text-white underline cursor-pointer mt-2"
+                >
+                  Send another inquiry
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleLeadSubmit} className="flex flex-col gap-4">
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={leadForm.name}
+                    onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                    placeholder="e.g. Amina Bello"
+                    className="w-full rounded-xl bg-[#101F2B] border border-white/10 focus:border-[#EF5613] focus:outline-none px-4 py-3 text-sm text-white placeholder-gray-500 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
+                    Work Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={leadForm.email}
+                    onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                    placeholder="amina@company.com"
+                    className="w-full rounded-xl bg-[#101F2B] border border-white/10 focus:border-[#EF5613] focus:outline-none px-4 py-3 text-sm text-white placeholder-gray-500 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
+                    How can we help?
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={leadForm.message}
+                    onChange={(e) => setLeadForm({ ...leadForm, message: e.target.value })}
+                    placeholder="Tell us briefly about your project, timeline, or challenge..."
+                    className="w-full rounded-xl bg-[#101F2B] border border-white/10 focus:border-[#EF5613] focus:outline-none px-4 py-3 text-sm text-white placeholder-gray-500 transition-colors resize-none"
+                  />
+                </div>
+
+                <Button type="submit" className="w-full py-3.5 text-sm font-bold mt-1">
+                  Get a Project Estimate <FiArrowRight className="inline w-4 h-4 ml-1" />
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </section>

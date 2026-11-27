@@ -124,6 +124,9 @@ export interface FlagshipProduct {
   platform: string;
   tagline: string;
   description: string;
+  challenge: string;
+  solution: string;
+  result: string;
   metrics: { label: string; value: string }[];
   stack: string[];
   liveStatus: string;
@@ -141,6 +144,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Seamless Multi-Currency Wallets, Instant P2P Payments & High-Yield Savings",
     description:
       "A modern fintech mobile and web application engineered for high-concurrency peer-to-peer transfers, virtual card generation, automated micro-savings pots, and bank-grade encryption with sub-second settlement.",
+    challenge:
+      "Legacy payment rails caused 24-hour settlement delays and failed cross-border transfers during peak transaction windows.",
+    solution:
+      "Engineered event-driven Kafka payment channels, multi-currency virtual card issuing, and PCI-DSS Level 1 vault security.",
+    result:
+      "Scaled to 45,000+ active users with 18ms instant settlement and 99.99% uptime.",
     metrics: [
       { label: "Active Users", value: "45,000+" },
       { label: "Settlement Speed", value: "18ms Instant" },
@@ -165,6 +174,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Autonomous Skill-Matching, AI Resume Parsing & Verified Global Hiring",
     description:
       "An intelligent job discovery and talent marketplace leveraging semantic vector AI to match candidates with high-growth companies, featuring automated milestone contracts, video interviews, and skill verification.",
+    challenge:
+      "Recruiters spent weeks manually screening mismatched CVs while remote contractors lacked secure milestone payment protection.",
+    solution:
+      "Built a semantic vector AI matching engine, integrated WebRTC interview rooms, and automated escrow milestone contracts.",
+    result:
+      "10x faster hiring velocity with 98.4% match precision across 85,000+ verified candidates.",
     metrics: [
       { label: "Talent Pool", value: "85,000+" },
       { label: "Match Precision", value: "98.4% AI Match" },
@@ -189,6 +204,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Decentralized Royalty Payouts, HD Audio/Video Streaming & Creator Tipping",
     description:
       "A next-generation music and video streaming mobile and web platform where users enjoy lossless audio and video streaming while creators get paid per-second listened via automated transparent micro-royalties.",
+    challenge:
+      "Independent creators waited months for opaque royalty statements while listeners suffered buffering on low-bandwidth networks.",
+    solution:
+      "Deployed adaptive-bitrate HLS streaming across global edge nodes paired with a real-time per-second royalty payout ledger.",
+    result:
+      "2.5M+ monthly streams with sub-second playback start and 100% real-time payout accuracy.",
     metrics: [
       { label: "Monthly Streams", value: "2.5M+ Streams" },
       { label: "Audio Latency", value: "Sub-Second HLS" },
@@ -213,6 +234,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "End-to-End Academic ERP, Automated Grading & Parent-Student Portal",
     description:
       "A comprehensive AI-driven school operating system powering K-12 and tertiary institutions with biometric attendance, automated tuition fee reconciliation, AI grading assistance, and real-time parent notifications.",
+    challenge:
+      "Schools relied on paper registers and fragmented spreadsheets, causing tuition leakage and multi-week report card delays.",
+    solution:
+      "Created a multi-tenant school ERP with biometric attendance, automated fee reconciliation, and AI-assisted report generation.",
+    result:
+      "Deployed across 35+ campuses serving 40,000+ students with 100% reconciled fee collection.",
     metrics: [
       { label: "Campuses Managed", value: "35+ Schools" },
       { label: "Enrolled Students", value: "40,000+" },
@@ -237,6 +264,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Unified CRM, Agile Sprint Boards, Real-Time Docs & Automated Workflows",
     description:
       "A full modern work suite engineered to rival Zoho and ClickUp — combining agile Kanban sprint boards, deals CRM, collaborative real-time rich docs, team chat, and no-code workflow automations in one unified interface.",
+    challenge:
+      "Growing teams juggled 5+ disconnected subscriptions for CRM, sprint boards, docs, and internal chat.",
+    solution:
+      "Engineered a unified real-time workspace powered by CRDT collaborative docs, WebSocket sprint boards, and no-code triggers.",
+    result:
+      "15,000+ daily active teams operating at 60 FPS with <10ms live sync latency.",
     metrics: [
       { label: "Daily Active Teams", value: "15,000+" },
       { label: "Canvas Engine", value: "60 FPS Fluid" },
@@ -261,6 +294,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Automated Signature Field Append, Multi-Party Routing & Legal Audit Trails",
     description:
       "An intelligent e-signature and contract execution web platform that utilizes computer vision to automatically detect signature, date, and initials fields, appending verified cryptographic seals with SHA-256 audit logs.",
+    challenge:
+      "Legal and ops teams wasted hours manually tagging PDF signature boxes and chasing multi-party contract approvals.",
+    solution:
+      "Trained a LayoutLM vision model to auto-detect signature fields and paired it with cryptographic SHA-256 audit trails.",
+    result:
+      "3x faster contract turnaround with 99.1% auto-detection accuracy and full eIDAS/ESIGN compliance.",
     metrics: [
       { label: "Signing Speed", value: "3x Faster" },
       { label: "Legal Standing", value: "100% ESIGN / eIDAS" },
@@ -285,6 +324,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Real-Time Threat Detection, API Shielding & Penetration Defense Engine",
     description:
       "A 360-degree security and threat intelligence platform built specifically for financial institutions and payment processors. Guards core banking APIs against DDoS, credential stuffing, SQL injection, and data exfiltration.",
+    challenge:
+      "Financial APIs faced relentless automated credential-stuffing and DDoS probes that traditional cloud WAFs flagged too late.",
+    solution:
+      "Built a Rust + eBPF kernel-level packet inspection shield with sub-2ms behavioral bot fingerprinting.",
+    result:
+      "99.999% threat mitigation with zero breaches and full ISO 27001 / SOC 2 readiness.",
     metrics: [
       { label: "Threat Mitigation", value: "99.999%" },
       { label: "WAF Latency", value: "< 2ms Overhead" },
@@ -309,6 +354,12 @@ export const flagshipApps: FlagshipProduct[] = [
     tagline: "Clinical Bed Management, Electronic Medical Records, Pharmacy & Billing OS",
     description:
       "A full-scale hospital operating system managing patient triage, real-time ICU/ward bed allocation, doctor schedules, digital diagnostic orders, automated pharmacy inventory dispensing, and insurance claim settlement.",
+    challenge:
+      "Hospitals struggled with disconnected EMR, pharmacy, and billing tools—slowing patient triage and bed turnover.",
+    solution:
+      "Delivered an HL7/FHIR-certified Hospital OS unifying triage, live ICU bed telemetry, pharmacy inventory, and claims.",
+    result:
+      "Operating across 18+ hospitals managing 500,000+ patient records at 99.999% SLA.",
     metrics: [
       { label: "Hospital Networks", value: "18+ Facilities" },
       { label: "Patient Records", value: "500,000+" },
@@ -369,34 +420,34 @@ export const processData = [
   {
     step: "01",
     id: "discovery",
-    title: "Discovery",
+    title: "Discovery & Strategy",
     tagline: "Strategic Alignment",
     summary:
-      "We dive deep into your project vision, target market, competitors, and technical requirements to build a clear, outcome-focused roadmap.",
+      "We audit your business goals, technical requirements, and user flows to lock down a transparent scope, architecture, and milestone budget.",
   },
   {
     step: "02",
     id: "design",
-    title: "Design",
-    tagline: "User-Centric Architecture",
+    title: "Architecture & Design",
+    tagline: "User-Centric Blueprint",
     summary:
-      "Our UI/UX specialists craft high-fidelity mockups, wireframes, and design systems focused on aesthetics, accessibility, and high conversion.",
+      "Our UI/UX specialists craft interactive prototypes and tokenized design systems so you validate the product experience before heavy engineering begins.",
   },
   {
     step: "03",
     id: "development",
-    title: "Development",
-    tagline: "Agile Engineering",
+    title: "Agile Build & Testing",
+    tagline: "QA-Backed Sprints",
     summary:
-      "We write clean, modular, and maintainable code with continuous testing, bi-weekly sprint demos, and real-time client collaboration.",
+      "We ship clean, modular code in bi-weekly sprints backed by automated regression suites, manual QA, and live staging demos.",
   },
   {
     step: "04",
     id: "testing",
-    title: "Testing & Launch",
-    tagline: "Quality Assurance",
+    title: "Deployment & Support",
+    tagline: "Seamless Launch & Fixes",
     summary:
-      "Rigorous end-to-end security audits, automated regression suites, load testing, and smooth production deployment with 24/7/365 support.",
+      "Zero-downtime cloud deployment, 24/7 telemetry monitoring, security patching, and ongoing maintenance so your product never stalls.",
   },
 ];
 
