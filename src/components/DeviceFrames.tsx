@@ -92,7 +92,7 @@ export const LaptopFrame: React.FC<LaptopFrameProps> = ({
       </div>
 
       {/* Laptop Aluminum Deck & Hinge Base */}
-      <div className="relative -mt-[1px] h-3 sm:h-4 w-[104%] rounded-b-xl border-t border-white/20 bg-[#25323D] shadow-lg flex justify-center">
+      <div className="relative -mt-[1px] h-3 sm:h-4 w-[101%] sm:w-[104%] rounded-b-xl border-t border-white/20 bg-[#25323D] shadow-lg flex justify-center">
         <div className="h-1.5 w-16 sm:w-24 rounded-b-md bg-[#131D24]" />
       </div>
 

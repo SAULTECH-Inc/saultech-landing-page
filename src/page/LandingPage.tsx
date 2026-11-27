@@ -266,7 +266,7 @@ const LandingPage: React.FC = () => {
           <motion.div
             animate={{ y: [-7, 7, -7] }}
             transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
-            className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 z-20 px-3.5 py-2 rounded-2xl bg-[#08141C] border border-[#EF5613] text-white text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
+            className="absolute top-2 left-2 sm:-top-5 sm:-left-5 z-20 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-[#08141C] border border-[#EF5613] text-white text-[11px] sm:text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="font-mono">48,500 TPS Core</span>
@@ -275,7 +275,7 @@ const LandingPage: React.FC = () => {
           <motion.div
             animate={{ y: [7, -7, 7] }}
             transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut" }}
-            className="absolute -bottom-3 -right-3 sm:-bottom-5 sm:-right-5 z-20 px-3.5 py-2 rounded-2xl bg-[#08141C] border border-white/20 text-white text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
+            className="absolute bottom-2 right-2 sm:-bottom-5 sm:-right-5 z-20 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-[#08141C] border border-white/20 text-white text-[11px] sm:text-xs font-bold shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-2 select-none"
           >
             <span className="font-mono">99.99% Uptime SLA</span>
           </motion.div>
@@ -283,7 +283,7 @@ const LandingPage: React.FC = () => {
           <motion.div
             animate={{ y: [-4, 4, -4] }}
             transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
-            className="absolute -bottom-3 left-6 sm:-bottom-5 z-20 px-3 py-1.5 rounded-xl bg-[#101F2B] border border-white/10 text-[11px] font-mono text-gray-300 shadow-xl flex items-center gap-2 select-none"
+            className="hidden sm:flex absolute -bottom-5 left-6 z-20 px-3 py-1.5 rounded-xl bg-[#101F2B] border border-white/10 text-[11px] font-mono text-gray-300 shadow-xl items-center gap-2 select-none"
           >
             <motion.span
               animate={{ rotate: 360 }}
@@ -611,7 +611,7 @@ const LandingPage: React.FC = () => {
       ══════════════════════════════════════════ */}
       <footer
         id="company"
-        className="w-full border-t border-white/10 bg-[#061017] pt-16 pb-12 mt-0"
+        className="w-full border-t border-white/10 bg-[#061017] pt-16 pb-24 sm:pb-14 mt-0"
       >
         <div className="w-[92%] max-w-7xl mx-auto flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">

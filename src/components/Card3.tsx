@@ -169,7 +169,7 @@ const Card3: React.FC = () => {
         </div>
 
         {/* Real Device Showcase Canvas */}
-        <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-4 sm:p-8 pt-14 sm:pt-14 overflow-visible min-h-[540px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
+        <div className="relative w-full rounded-2xl bg-[#08141C] border border-white/10 p-3 sm:p-8 pt-5 sm:pt-14 overflow-visible min-h-[460px] sm:min-h-[540px] flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-0">
           {/* Floating Breakout Badges */}
           <div className="absolute top-4 left-4 z-30 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101F2B] border border-[#EF5613] text-white text-[11px] font-bold shadow-xl">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -227,7 +227,7 @@ const Card3: React.FC = () => {
                     </div>
 
                     {/* Financial Metrics */}
-                    <div className="grid grid-cols-4 gap-3 text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">USD Vault Balance</span>
                         <p className="text-base font-black text-white mt-1">$1,482,910.40</p>
@@ -293,7 +293,7 @@ const Card3: React.FC = () => {
                       <span className="text-xs text-green-400 font-mono">85,000+ Vetted Candidates</span>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">Active Roles</span>
                         <p className="text-lg font-black text-white mt-1">24 Open Positions</p>
@@ -361,7 +361,7 @@ const Card3: React.FC = () => {
                       <span className="text-xs text-green-400 font-mono">2,540,120 Streams This Month</span>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">Real-time Royalty Earned</span>
                         <p className="text-lg font-black text-[#EF5613] mt-1">$18,420.00</p>
@@ -413,7 +413,7 @@ const Card3: React.FC = () => {
                       <span className="text-xs text-green-400 font-mono">40,000+ Students Active</span>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">Tuition Fee Reconciliation</span>
                         <p className="text-lg font-black text-green-400 mt-1">99.8% Cleared</p>
@@ -460,7 +460,7 @@ const Card3: React.FC = () => {
                     </div>
 
                     {/* Kanban Board Columns */}
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-[10px] font-bold uppercase text-gray-400">Sprint Backlog</span>
@@ -544,7 +544,7 @@ const Card3: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">Turnaround</span>
                         <p className="text-base font-black text-white mt-1">3x Faster</p>
@@ -577,7 +577,7 @@ const Card3: React.FC = () => {
                       <span className="text-xs text-green-400 font-mono">0 Breaches Recorded</span>
                     </div>
 
-                    <div className="grid grid-cols-4 gap-2 text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">Attacks Deflected</span>
                         <p className="text-base font-black text-[#EF5613] mt-1">4,821 Threats</p>
@@ -638,7 +638,7 @@ const Card3: React.FC = () => {
                       <span className="text-xs text-green-400 font-mono">HL7 / FHIR Standard</span>
                     </div>
 
-                    <div className="grid grid-cols-4 gap-2 text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                       <div className="p-3 rounded-xl bg-[#101F2B] border border-white/5">
                         <span className="text-[10px] text-gray-400">ICU Bed Occupancy</span>
                         <p className="text-base font-black text-white mt-1">88% (42/48)</p>
