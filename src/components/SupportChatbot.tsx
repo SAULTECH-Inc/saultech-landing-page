@@ -173,7 +173,7 @@ export const SupportChatbot: React.FC = () => {
                 <p className="text-sm font-bold text-white leading-tight">
                   SaulTech Support
                 </p>
-                <div className="flex items-center gap-1.5 text-[11px] text-gray-400">
+                <div style={{ color: "#9CA3AF" }} className="flex items-center gap-1.5 text-[11px]">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span>Online • Replies in seconds</span>
                 </div>
@@ -212,10 +212,14 @@ export const SupportChatbot: React.FC = () => {
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
+                  style={{
+                    color: "#FFFFFF",
+                    backgroundColor: msg.role === "user" ? "#EF5613" : "#162435",
+                  }}
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-[#EF5613] text-white rounded-br-sm"
-                      : "bg-[#0F1E2B] border border-white/10 text-gray-200 rounded-bl-sm"
+                      ? "rounded-br-sm"
+                      : "border border-white/10 rounded-bl-sm"
                   }`}
                 >
                   {renderFormattedText(msg.content)}
@@ -241,7 +245,8 @@ export const SupportChatbot: React.FC = () => {
                     key={prompt}
                     type="button"
                     onClick={() => sendMessage(prompt)}
-                    className="text-left text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#EF5613]/20 border border-white/10 hover:border-[#EF5613]/50 text-gray-300 hover:text-white transition-all cursor-pointer"
+                    style={{ color: "#E2E8F0" }}
+                    className="text-left text-xs px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-[#EF5613]/25 border border-white/20 hover:border-[#EF5613]/60 hover:!text-white transition-all cursor-pointer"
                   >
                     {prompt}
                   </button>
@@ -330,7 +335,7 @@ export const SupportChatbot: React.FC = () => {
                   </>
                 )}
               </button>
-              <span className="text-[11px] text-gray-500">24h SLA</span>
+              <span style={{ color: "#94A3B8" }} className="text-[11px]">24h SLA</span>
             </div>
           )}
 
@@ -347,7 +352,8 @@ export const SupportChatbot: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about services, audits, pricing..."
-              className="flex-1 px-3.5 py-2 rounded-xl bg-[#08141C] border border-white/10 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#EF5613]"
+              className="flex-1 px-3.5 py-2 rounded-xl bg-[#08141C] border border-white/10 text-xs focus:outline-none focus:border-[#EF5613]"
+              style={{ color: "#FFFFFF" }}
             />
             <button
               type="submit"
