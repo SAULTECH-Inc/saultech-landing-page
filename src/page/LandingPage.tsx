@@ -4,8 +4,6 @@ import Button from "../common/Button";
 import Card1 from "../components/Card1";
 import Card2 from "../components/Card2";
 import Card3 from "../components/Card3";
-import DesignShowcase from "../components/DesignShowcase";
-import KineticShowcase from "../components/KineticShowcase";
 import VelocityTicker from "../components/VelocityTicker";
 import CommandDock from "../components/CommandDock";
 import ProcessIllustration from "../components/ProcessIllustration";
@@ -27,6 +25,8 @@ import {
   FiMail,
   FiMapPin,
   FiSettings,
+  FiArrowRight,
+  FiCheckCircle,
 } from "react-icons/fi";
 
 const LandingPage: React.FC = () => {
@@ -58,8 +58,10 @@ const LandingPage: React.FC = () => {
       {/* Global Interactive Modal */}
       <Modal />
 
-      {/* Sticky Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-[#08141C] border-b border-white/10 transition-all">
+      {/* ══════════════════════════════════════════
+          STICKY NAVIGATION
+      ══════════════════════════════════════════ */}
+      <header className="sticky top-0 z-40 w-full bg-[#08141C]/95 backdrop-blur border-b border-white/10 transition-all">
         <div className="w-[92%] max-w-7xl mx-auto h-20 flex items-center justify-between">
           {/* Logo */}
           <Link
@@ -77,103 +79,40 @@ const LandingPage: React.FC = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Nav — matches new section order */}
           <nav className="hidden lg:flex items-center gap-7">
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Our Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="portfolio"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Flagship Apps
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="design-lab"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Creative Lab
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="kinetic-lab"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Infrastructure
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="process"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Our Process
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="testimonials"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Testimonials
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to="company"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
-            >
-              Company
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
-            </Link>
+            {[
+              { to: "why-us", label: "Why Us" },
+              { to: "services", label: "Services" },
+              { to: "portfolio", label: "Our Work" },
+              { to: "process", label: "Process" },
+              { to: "testimonials", label: "Testimonials" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+                className="text-sm font-medium text-gray-300 hover:text-white cursor-pointer transition-colors relative py-1 group"
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF5613] transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
           </nav>
 
-          {/* Desktop CTA Button */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button
-              onClick={() => openModal("intouch")}
-              className="px-6 py-2.5 text-sm"
-            >
-              Contact Us
+            <Button onClick={() => openModal("intouch")} className="px-6 py-2.5 text-sm">
+              Start a Project →
             </Button>
           </div>
 
-          {/* Mobile Hamburger Toggle Button */}
+          {/* Mobile */}
           <div className="flex lg:hidden items-center gap-3">
-            <Button
-              onClick={() => openModal("intouch")}
-              className="px-4 py-2 text-xs"
-            >
+            <Button onClick={() => openModal("intouch")} className="px-4 py-2 text-xs">
               Let's Talk
             </Button>
             <button
@@ -186,7 +125,7 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Slide-down Drawer */}
+        {/* Mobile Drawer */}
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -194,156 +133,111 @@ const LandingPage: React.FC = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden border-t border-white/10 bg-[#08141C] px-6 py-6 flex flex-col gap-4 shadow-2xl"
           >
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+            {[
+              { to: "why-us", label: "Why SaulTech" },
+              { to: "services", label: "Services" },
+              { to: "portfolio", label: "Our Work" },
+              { to: "process", label: "Our Process" },
+              { to: "testimonials", label: "Testimonials" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+                onClick={closeMobileMenu}
+                className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button
+              onClick={() => { closeMobileMenu(); openModal("intouch"); }}
+              className="w-full py-3 mt-2 text-sm"
             >
-              Our Services
-            </Link>
+              Start a Project
+            </Button>
+          </motion.div>
+        )}
+      </header>
+
+      {/* ══════════════════════════════════════════
+          1. HERO — The Promise
+          Goal: Visitor knows in 5s what SaulTech
+          does and what to do next.
+      ══════════════════════════════════════════ */}
+      <section
+        id="hero"
+        className="w-[92%] max-w-7xl mx-auto pt-12 md:pt-20 pb-16 md:pb-24 flex flex-col lg:flex-row items-center justify-between gap-12"
+      >
+        <div className="w-full lg:w-[58%] flex flex-col items-start text-left">
+          {/* Status badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm font-medium text-gray-300 mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#EF5613] animate-pulse" />
+            <span>Available for New Projects &amp; Contracts</span>
+          </div>
+
+          {/* Headline — outcome-led */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
+            We Build the Software{" "}
+            <span className="text-[#EF5613]">Behind Ambitious Businesses.</span>
+          </h1>
+
+          {/* Sub — who it's for + what we do */}
+          <p className="text-base sm:text-lg text-gray-300 mt-6 leading-relaxed max-w-xl">
+            SaulTech is a full-service software consultancy. From idea to production — we design, engineer, and launch scalable digital products for startups and enterprises across Africa and beyond.
+          </p>
+
+          {/* Trust signals inline */}
+          <ul className="mt-5 flex flex-col sm:flex-row gap-3 text-sm text-gray-400">
+            {[
+              "8 live products in production",
+              "500K+ end users served",
+              "24/7/365 support",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <FiCheckCircle className="w-4 h-4 text-[#EF5613] shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-4 mt-8 w-full sm:w-auto">
+            <Button
+              onClick={() => openModal("intouch")}
+              className="w-full sm:w-auto px-8 py-3.5 text-base"
+            >
+              Start a Project →
+            </Button>
             <Link
               to="portfolio"
               spy={true}
               smooth={true}
               offset={-80}
               duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Flagship Apps & Products
-            </Link>
-            <Link
-              to="design-lab"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Creative Design Lab
-            </Link>
-            <Link
-              to="kinetic-lab"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Infrastructure &amp; CI/CD
-            </Link>
-            <Link
-              to="process"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Our Process
-            </Link>
-            <Link
-              to="testimonials"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              Testimonials
-            </Link>
-            <Link
-              to="company"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={closeMobileMenu}
-              className="text-base font-medium text-gray-200 hover:text-[#EF5613] py-2 border-b border-white/5 cursor-pointer"
-            >
-              About Company
-            </Link>
-            <Button
-              onClick={() => {
-                closeMobileMenu();
-                openModal("intouch");
-              }}
-              className="w-full py-3 mt-2 text-sm"
-            >
-              Get in Touch with Us
-            </Button>
-          </motion.div>
-        )}
-      </header>
-
-      {/* HERO SECTION */}
-      <section
-        id="hero"
-        className="w-[92%] max-w-7xl mx-auto pt-12 md:pt-20 pb-16 md:pb-24 flex flex-col lg:flex-row items-center justify-between gap-12"
-      >
-        <div className="w-full lg:w-[58%] flex flex-col items-start text-left">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm font-medium text-gray-300 mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#EF5613] animate-pulse" />
-            <span>Next-Generation Software Engineering & Consulting</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
-            Custom Software Development Services for{" "}
-            <span className="text-[#EF5613]">
-              Your Business.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-gray-300 mt-6 leading-relaxed max-w-xl">
-            Blazing-fast, enterprise-grade software development for high-growth startups and established enterprises — engineered for scalability and backed by 24/7/365 dedicated support.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 mt-8 w-full sm:w-auto">
-            <Button
-              onClick={() => openModal("intouch")}
-              className="w-full sm:w-auto px-8 py-3.5 text-base"
-            >
-              Let's Talk &rarr;
-            </Button>
-
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
               className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all text-sm font-semibold cursor-pointer"
             >
-              Explore Our Services
+              See Our Work
             </Link>
           </div>
 
-          {/* Metrics Bar */}
+          {/* Quick stat row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 mt-10 border-t border-white/10 w-full">
             {companyStats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#EF5613]">
                   {stat.value}
                 </span>
-                <span className="text-xs text-gray-400 mt-1 font-medium">
-                  {stat.label}
-                </span>
+                <span className="text-xs text-gray-400 mt-1 font-medium">{stat.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Hero Visual Art with Live Floating Telemetry Badges */}
+        {/* Hero Visual */}
         <div className="w-full lg:w-[42%] flex justify-center items-center relative">
           <motion.div
             animate={{ y: [-7, 7, -7] }}
@@ -387,68 +281,65 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* DYNAMIC KINETIC VELOCITY TICKER */}
+      {/* ══════════════════════════════════════════
+          2. SOCIAL PROOF SIGNAL — Stats at a glance
+          Hits right after hero before visitor scrolls away.
+      ══════════════════════════════════════════ */}
       <VelocityTicker />
 
-      {/* CORE VALUE PROPOSITIONS / CARDS */}
-      <section className="w-[92%] max-w-7xl mx-auto py-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+      {/* ══════════════════════════════════════════
+          3. WHY SAULTECH — Problem / Solution
+          Makes the visitor feel seen:
+          "This is built for you if…"
+      ══════════════════════════════════════════ */}
+      <section
+        id="why-us"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24"
+      >
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
-            Engineered For Excellence
+            Why SaulTech
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
-            Why Forward-Thinking Brands Choose SaulTech
+            Built for Businesses That Can't Afford to Wait
           </h2>
           <div className="w-16 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
+            Whether you're launching your first product or scaling an existing platform, we tailor our model to your exact stage and goals.
+          </p>
         </div>
 
         <Card1 cardsData={cardsData} />
       </section>
 
-      {/* OUR PROCESS SECTION */}
-      <section
-        id="process"
-        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
-      >
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
-            Methodology
-          </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
-            Our Agile Engineering Process
-          </h2>
-          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
-          <p className="text-sm sm:text-base text-gray-300 mt-4">
-            We follow a transparent, battle-tested product development lifecycle designed to minimize risk and accelerate time-to-market.
-          </p>
-        </div>
-
-        {/* Interactive Illustrated Process Architecture */}
-        <ProcessIllustration />
-      </section>
-
-      {/* SERVICES SECTION */}
+      {/* ══════════════════════════════════════════
+          4. CAPABILITIES — What we can build
+          Shows technical depth without overwhelming.
+      ══════════════════════════════════════════ */}
       <section
         id="services"
         className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
-            Capabilities
+            Services &amp; Capabilities
           </span>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
-            Comprehensive Services We Offer
+            Everything You Need, Under One Roof
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
-          <p className="text-sm sm:text-base text-gray-300 mt-4">
-            End-to-end digital solutions spanning frontend, backend, native mobile, cloud infrastructure, and intelligent automation.
+          <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
+            End-to-end solutions spanning frontend, backend, native mobile, cloud infrastructure, and intelligent automation — no outsourcing, all in-house.
           </p>
         </div>
 
         <Card2 cardsData={card2Data} />
       </section>
 
-      {/* FLAGSHIP APPS & SHOWCASE SECTION */}
+      {/* ══════════════════════════════════════════
+          5. PORTFOLIO — Proof of work
+          Real products = the strongest credibility signal.
+      ══════════════════════════════════════════ */}
       <section
         id="portfolio"
         className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
@@ -458,70 +349,83 @@ const LandingPage: React.FC = () => {
             Proven Track Record
           </span>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mt-2 tracking-tight">
-            Flagship Products We've Built
+            Products We've Taken to Market
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
-          <p className="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed">
-            Explore 8 production-grade software ecosystems engineered by SaulTech — spanning fintech banking, AI talent matching, media streaming, educational ERPs, enterprise work suites, and hospital operating systems.
+          <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
+            8 production-grade software ecosystems — fintech, AI talent, media streaming, school ERP, enterprise workspace, document signing, financial security, and hospital OS.
           </p>
         </div>
 
         <Card3 />
       </section>
 
-      {/* HIGH GRAPHICS & CREATIVE DESIGN LAB */}
+      {/* ══════════════════════════════════════════
+          6. PROCESS — How we work together
+          Reduces the "will this be chaotic?" anxiety.
+      ══════════════════════════════════════════ */}
       <section
-        id="design-lab"
-        className="w-full py-16 md:py-24 border-t border-b border-white/10 bg-[#061017]"
+        id="process"
+        className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
-        <DesignShowcase />
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
+            Methodology
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
+            How We Work With You
+          </h2>
+          <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
+          <p className="text-sm sm:text-base text-gray-400 mt-4 leading-relaxed">
+            A transparent, battle-tested lifecycle — no surprises, no guesswork. You're in the loop at every sprint.
+          </p>
+        </div>
+
+        <ProcessIllustration />
       </section>
 
-      {/* LIVE KINETIC & MOTION ARENA */}
-      <section
-        id="kinetic-lab"
-        className="w-full py-16 md:py-24 border-b border-white/10 bg-[#08141C]"
-      >
-        <KineticShowcase />
-      </section>
-
-      {/* CLIENT TESTIMONIALS SECTION */}
+      {/* ══════════════════════════════════════════
+          7. TESTIMONIALS — Don't take our word for it
+          Human voices seal the trust.
+      ══════════════════════════════════════════ */}
       <section
         id="testimonials"
         className="w-[92%] max-w-7xl mx-auto py-16 md:py-24 flex flex-col items-center"
       >
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase font-bold tracking-widest text-[#EF5613]">
-            Social Proof
+            Client Voices
           </span>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2">
             What Our Clients Say
           </h2>
           <div className="w-20 h-1 bg-[#EF5613] rounded-full mx-auto mt-4" />
-          <p className="text-sm sm:text-base text-gray-300 mt-4">
+          <p className="text-sm sm:text-base text-gray-400 mt-4">
             Trusted by founders, tech executives, and product leaders across high-growth industries.
           </p>
         </div>
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonialsData.map((item) => (
-            <div
+            <motion.div
               key={item.id}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 24 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4 }}
               className="rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
             >
               <div>
-                {/* 5-Star Rating */}
+                {/* Stars */}
                 <div className="flex items-center gap-1 text-[#FFA203] mb-4">
                   {[...Array(item.rating)].map((_, i) => (
                     <FiStar key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-
                 <p className="text-sm sm:text-base text-gray-300 italic leading-relaxed">
-                  "{item.quote}"
+                  &ldquo;{item.quote}&rdquo;
                 </p>
               </div>
-
               <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/5">
                 <img
                   src={item.avatar}
@@ -531,60 +435,74 @@ const LandingPage: React.FC = () => {
                 <div>
                   <h4 className="font-bold text-sm text-white">{item.name}</h4>
                   <p className="text-xs text-gray-400">
-                    {item.role}, <span className="text-gray-300">{item.company}</span>
+                    {item.role},{" "}
+                    <span className="text-gray-300">{item.company}</span>
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* CALL TO ACTION BANNER */}
-      <section className="w-[92%] max-w-7xl mx-auto my-12">
-        <div className="relative rounded-3xl bg-[#101F2B] border border-[#EF5613] p-8 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(239,86,19,0.15)] flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="max-w-2xl text-center lg:text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#EF5613]">
-              Have a Project in Mind?
-            </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-2 leading-tight">
-              Let's Build Something Exceptional Together.
-            </h2>
-            <p className="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed">
-              Whether you need to launch a high-impact MVP, scale an existing platform, or augment your engineering capacity, our team is ready to deliver.
-            </p>
-          </div>
+      {/* ══════════════════════════════════════════
+          8. FINAL CTA — What to do next
+          One clear action. No distractions.
+      ══════════════════════════════════════════ */}
+      <section className="w-full bg-[#101F2B] border-t border-b border-[#EF5613]/30 py-20 md:py-28">
+        <div className="w-[92%] max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#EF5613]">
+            Ready to Build?
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            Let's Turn Your Idea Into a{" "}
+            <span className="text-[#EF5613]">Production-Grade Product.</span>
+          </h2>
+          <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-xl">
+            Whether you need an MVP in 6 weeks, a team to scale your platform, or a full product partner — we're ready. No fluff, no delays.
+          </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
             <Button
               onClick={() => openModal("contactform")}
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold shadow-[0_0_24px_rgba(239,86,19,0.35)]"
+              className="w-full sm:w-auto px-10 py-4 text-base font-bold shadow-[0_0_30px_rgba(239,86,19,0.4)]"
             >
-              Get in Touch with Us
+              Start a Project <FiArrowRight className="inline w-4 h-4 ml-1" />
             </Button>
-
             <a
               href="https://wa.me/2347011079676?text=Hi%20SaulTech,%20I%20would%20like%20to%20discuss%20a%20software%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/8 hover:bg-white/14 border border-white/20 text-white font-semibold text-sm transition-all"
             >
               <img src={Whatsapp} alt="WhatsApp" className="w-5 h-5" />
-              <span>Quick WhatsApp</span>
+              <span>Message on WhatsApp</span>
             </a>
+          </div>
+
+          {/* Micro trust signals below CTAs */}
+          <div className="flex flex-wrap justify-center gap-6 mt-6 text-xs text-gray-500">
+            {["Free initial consultation", "Response within 24h", "NDA available on request"].map((t) => (
+              <span key={t} className="flex items-center gap-1.5">
+                <FiCheckCircle className="w-3.5 h-3.5 text-[#EF5613]" />
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* MODERN FOOTER */}
+      {/* ══════════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════════ */}
       <footer
         id="company"
-        className="w-full border-t border-white/10 bg-[#061017] pt-16 pb-12 mt-12"
+        className="w-full border-t border-white/10 bg-[#061017] pt-16 pb-12 mt-0"
       >
         <div className="w-[92%] max-w-7xl mx-auto flex flex-col">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-            {/* Column 1: Brand & Bio */}
-            <div className="lg:col-span-2 flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+            {/* Col 1: Brand */}
+            <div className="lg:col-span-1 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#EF5613] flex items-center justify-center font-black text-lg text-white">
                   S
@@ -593,99 +511,67 @@ const LandingPage: React.FC = () => {
                   SAUL<span className="text-[#EF5613]">TECH</span>
                 </span>
               </div>
-              <p className="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
-                SaulTech provides premier software consulting, bespoke cloud development, digital transformation, and scalable engineering to power modern business growth.
+              <p className="text-sm text-gray-400 leading-relaxed max-w-sm mb-5">
+                Full-service software consultancy helping ambitious businesses build, ship, and scale digital products.
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-semibold text-gray-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full w-fit">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span>Available for New Projects & Contracts</span>
+                <span>Available for New Projects</span>
               </div>
             </div>
 
-            {/* Column 2: Services */}
+            {/* Col 2: Services */}
             <div className="flex flex-col">
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
-                Services
-              </h4>
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">Services</h4>
               <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  Custom Software
-                </li>
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  Web Applications
-                </li>
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  Mobile App Development
-                </li>
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  UI/UX Product Design
-                </li>
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  Cloud & DevOps
-                </li>
-                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => openModal("intouch")}>
-                  AI & ML Integration
-                </li>
+                {["Custom Software", "Web Applications", "Mobile App Development", "UI/UX Product Design", "Cloud & DevOps", "AI & ML Integration"].map((s) => (
+                  <li key={s}
+                    className="hover:text-white transition-colors cursor-pointer"
+                    onClick={() => openModal("intouch")}
+                  >{s}</li>
+                ))}
               </ul>
             </div>
 
-            {/* Column 3: Navigation */}
+            {/* Col 3: Quick Links */}
             <div className="flex flex-col">
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
-                Quick Links
-              </h4>
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
               <ul className="space-y-2.5 text-sm text-gray-400">
-                <li>
-                  <Link to="hero" spy={true} smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="services" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link to="process" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Our Process
-                  </Link>
-                </li>
-                <li>
-                  <Link to="portfolio" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Flagship Apps
-                  </Link>
-                </li>
-                <li>
-                  <Link to="design-lab" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Creative Design Lab
-                  </Link>
-                </li>
-                <li>
-                  <Link to="kinetic-lab" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Infrastructure Engine
-                  </Link>
-                </li>
-                <li>
-                  <Link to="testimonials" spy={true} smooth={true} offset={-80} duration={500} className="hover:text-white transition-colors cursor-pointer">
-                    Testimonials
-                  </Link>
-                </li>
+                {[
+                  { to: "hero", label: "Home" },
+                  { to: "why-us", label: "Why SaulTech" },
+                  { to: "services", label: "Services" },
+                  { to: "portfolio", label: "Our Work" },
+                  { to: "process", label: "Our Process" },
+                  { to: "testimonials", label: "Testimonials" },
+                ].map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      spy={true}
+                      smooth={true}
+                      offset={-80}
+                      duration={500}
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Column 4: Contact & Office */}
+            {/* Col 4: Contact */}
             <div className="flex flex-col">
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">
-                Contact Office
-              </h4>
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4">Contact</h4>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex items-start gap-2.5">
                   <FiMapPin className="w-4 h-4 text-[#EF5613] mt-1 shrink-0" />
-                  <span>Adamawa Waziri Way 122, Nigeria</span>
+                  <span>Adamawa, Waziri Way 122, Nigeria</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <FiPhone className="w-4 h-4 text-[#EF5613] shrink-0" />
-                  <a href="tel:07011079676" className="hover:text-white transition-colors">
+                  <a href="tel:+2347011079676" className="hover:text-white transition-colors">
                     +234 701 107 9676
                   </a>
                 </li>
@@ -700,16 +586,16 @@ const LandingPage: React.FC = () => {
                     onClick={() => openModal("contactform")}
                     className="text-xs font-semibold text-[#EF5613] hover:underline cursor-pointer"
                   >
-                    Open Support Request &rarr;
+                    Send us a Brief →
                   </button>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Bar */}
+          {/* Bottom bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-            <p>&copy; {new Date().getFullYear()} SaulTech. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} SaulTech IT Solutions. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <span className="hover:text-gray-300 cursor-pointer">Privacy Policy</span>
               <span className="hover:text-gray-300 cursor-pointer">Terms of Service</span>
@@ -719,7 +605,7 @@ const LandingPage: React.FC = () => {
         </div>
       </footer>
 
-      {/* FLOATING INTERACTIVE OS COMMAND DOCK */}
+      {/* FLOATING COMMAND DOCK */}
       <CommandDock />
     </div>
   );
