@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Group_1, Whatsapp } from "../assets/svg";
+import SaulTechLogo from "../assets/saultech-logo.png";
 import Button from "../common/Button";
 import Card1 from "../components/Card1";
 import Card2 from "../components/Card2";
@@ -93,11 +94,13 @@ const LandingPage: React.FC = () => {
             spy={true}
             smooth={true}
             duration={500}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#EF5613] flex items-center justify-center font-black text-xl text-white shadow-[0_0_16px_rgba(239,86,19,0.35)] group-hover:scale-105 transition-transform">
-              S
-            </div>
+            <img
+              src={SaulTechLogo}
+              alt="SaulTech Official Logo"
+              className="w-11 h-11 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_4px_12px_rgba(239,86,19,0.25)]"
+            />
             <span className="font-extrabold text-2xl tracking-tight text-white group-hover:text-[#EF5613] transition-colors">
               SAUL<span className="text-[#EF5613]">TECH</span>
             </span>
@@ -617,10 +620,12 @@ const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
             {/* Col 1: Brand */}
             <div className="lg:col-span-1 flex flex-col">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#EF5613] flex items-center justify-center font-black text-lg text-white">
-                  S
-                </div>
+              <div className="flex items-center gap-2.5 mb-4">
+                <img
+                  src={SaulTechLogo}
+                  alt="SaulTech Official Logo"
+                  className="w-10 h-10 object-contain"
+                />
                 <span className="font-extrabold text-2xl tracking-tight text-white">
                   SAUL<span className="text-[#EF5613]">TECH</span>
                 </span>
