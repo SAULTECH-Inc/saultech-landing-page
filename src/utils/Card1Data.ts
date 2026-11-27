@@ -6,24 +6,24 @@ export const cardsData = [
     image: Imac,
     title: "Bespoke Software",
     content:
-      "Our agile engineering team builds high-performance web applications and mobile solutions that elevate your business performance, streamline operations, and deliver world-class user experiences.",
-    services: ["MVP", "SaaS", "Cloud-based Apps", "Dedicated Team"],
+      "Have a product vision, but no engineering team to ship it? We take you from blueprint to production-grade web and mobile apps—built to scale from day one.",
+    services: ["MVP in Weeks", "SaaS Platforms", "Mobile Apps", "Dedicated Team"],
   },
   {
     id: 2,
     image: User_groups,
     title: "Team Extension",
     content:
-      "Hire top-tier developers that integrate seamlessly with your operations to rapidly scale your roadmap. We handle bespoke engineering, talent placement, and ongoing maintenance with cutting-edge standards.",
-    services: ["DevOps Outsourcing", "Embedded Engineers", "Cost Optimization"],
+      "Your roadmap is moving slower than your market. Embed our senior engineers directly into your workflow to ship features faster without the 6-month recruiting overhead.",
+    services: ["Embedded Engineers", "Rapid Scaling", "Zero Hiring Lag"],
   },
   {
     id: 3,
     image: Workspace,
     title: "DevOps & Cloud",
     content:
-      "Our comprehensive approach to DevOps provides automated, battle-tested infrastructure tailored to your exact requirements. We deliver resilient, high-uptime cloud solutions while optimizing infrastructure spend.",
-    services: ["Cloud Architecture", "System Migration", "CI/CD & Monitoring"],
+      "Slow deployments and unpredictable cloud bills? We architect automated CI/CD pipelines and high-uptime infrastructure that cuts waste and scales effortlessly.",
+    services: ["Cloud Architecture", "System Migration", "99.99% Uptime SLA"],
   },
 ];
 

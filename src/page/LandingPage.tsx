@@ -413,14 +413,19 @@ const LandingPage: React.FC = () => {
               initial={{ opacity: 0, y: 24 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4 }}
-              className="rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
+              className="relative rounded-2xl bg-[#101F2B] p-7 border border-white/10 hover:border-[#EF5613] transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_36px_rgba(239,86,19,0.12)]"
             >
               <div>
-                {/* Stars */}
-                <div className="flex items-center gap-1 text-[#FFA203] mb-4">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <FiStar key={i} className="w-4 h-4 fill-current" />
-                  ))}
+                <div className="flex items-center justify-between gap-2 mb-5">
+                  {/* Stars */}
+                  <div className="flex items-center gap-1 text-[#FFA203]">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <FiStar key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-[#08141C] border border-white/10 text-[10px] font-bold uppercase tracking-wider text-[#EF5613]">
+                    {item.company}
+                  </span>
                 </div>
                 <p className="text-sm sm:text-base text-gray-300 italic leading-relaxed">
                   &ldquo;{item.quote}&rdquo;

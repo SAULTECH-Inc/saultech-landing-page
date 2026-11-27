@@ -52,7 +52,7 @@ export const CommandDock: React.FC = () => {
             </Link>
 
             <Link
-              to="kinetic-lab"
+              to="process"
               spy={true}
               smooth={true}
               offset={-80}
@@ -60,7 +60,7 @@ export const CommandDock: React.FC = () => {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-xs font-semibold cursor-pointer transition-all"
             >
               <FiCpu className="w-3.5 h-3.5 text-green-400" />
-              <span className="hidden sm:inline">Infrastructure</span>
+              <span className="hidden sm:inline">Process</span>
             </Link>
 
             <button
